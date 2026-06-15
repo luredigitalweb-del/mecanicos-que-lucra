@@ -2,6 +2,7 @@ import { Check, ShieldCheck, Sparkles, Zap, Clock, Flame } from "lucide-react";
 import { motion } from "framer-motion";
 import brandLogo from "@/assets/logo-mecanico-que-lucra-nova.png";
 import { CtaButton } from "@/components/landing/ui/CtaButton";
+import { CHECKOUT_URL, appendUtms } from "@/lib/utm";
 import {
   Accordion,
   AccordionContent,
@@ -185,7 +186,7 @@ export function PurchaseFaqSection() {
                   whileTap={{ scale: 0.98 }}
                   className="offer-shimmer rounded-xl"
                 >
-                  <CtaButton href="https://pay.assiny.com.br/033c16/node/bkMCuu" size="xl" pulse className="w-full rounded-xl shadow-[0_18px_45px_-12px_color-mix(in_oklab,var(--color-brand-yellow)_80%,transparent)]">
+                  <CtaButton onClick={() => { window.location.href = appendUtms(CHECKOUT_URL); }} size="xl" pulse className="w-full rounded-xl shadow-[0_18px_45px_-12px_color-mix(in_oklab,var(--color-brand-yellow)_80%,transparent)]">
                     GARANTIR MEU INGRESSO
                   </CtaButton>
                 </motion.div>
@@ -233,7 +234,7 @@ export function PurchaseFaqSection() {
           </Accordion>
 
           <div className="mt-9 flex justify-center sm:mt-10">
-            <CtaButton href="https://pay.assiny.com.br/033c16/node/bkMCuu" size="xl" pulse className="sm:w-auto">
+            <CtaButton onClick={() => { window.location.href = appendUtms(CHECKOUT_URL); }} size="xl" pulse className="sm:w-auto">
               GARANTIR MEU INGRESSO
             </CtaButton>
           </div>

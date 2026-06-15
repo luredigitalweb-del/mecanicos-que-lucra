@@ -22,7 +22,7 @@ export function CtaButton({
   pulse = true,
   arrow = true,
 }: CtaButtonProps) {
-  const baseStyles = "group relative isolate inline-flex items-center justify-center overflow-hidden rounded-lg font-bold font-sora transition-all duration-300 tracking-wide uppercase text-center";
+  const baseStyles = "group relative isolate inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-lg font-bold font-sora transition-all duration-300 tracking-wide uppercase text-center";
 
   const variants = {
     primary: "cta-shimmer bg-brand-yellow text-brand-dark hover:bg-brand-yellow-light hover:-translate-y-0.5 hover:scale-[1.025] active:translate-y-0 active:scale-[0.98]",

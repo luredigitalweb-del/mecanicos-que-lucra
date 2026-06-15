@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { CtaButton } from "@/components/landing/ui/CtaButton";
+import { CHECKOUT_URL, appendUtms } from "@/lib/utm";
 
 export function StickyCta() {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,7 +31,7 @@ export function StickyCta() {
               Apenas R$ 19,90 • Vagas limitadas
             </p>
           </div>
-          <CtaButton href="https://pay.assiny.com.br/033c16/node/bkMCuu" size="default" className="w-full sm:w-auto">
+          <CtaButton onClick={() => { window.location.href = appendUtms(CHECKOUT_URL); }} size="default" className="w-full sm:w-auto">
             GARANTIR MINHA VAGA
           </CtaButton>
         </div>

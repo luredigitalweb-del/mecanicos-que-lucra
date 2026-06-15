@@ -8,6 +8,7 @@ import {
   useLocation,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { capturarUtms } from "@/lib/utm";
 
 function NotFoundComponent() {
   return (
@@ -106,6 +107,11 @@ function MetaPixelTracker() {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  // Captura os UTMs da URL uma única vez ao carregar o app.
+  useEffect(() => {
+    capturarUtms();
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
