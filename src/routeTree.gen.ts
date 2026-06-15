@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ObrigadoRouteImport } from './routes/obrigado'
 import { Route as R02RouteImport } from './routes/02'
 import { Route as R01RouteImport } from './routes/01'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ObrigadoRoute = ObrigadoRouteImport.update({
+  id: '/obrigado',
+  path: '/obrigado',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R02Route = R02RouteImport.update({
   id: '/02',
   path: '/02',
@@ -33,34 +39,45 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/01': typeof R01Route
   '/02': typeof R02Route
+  '/obrigado': typeof ObrigadoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/01': typeof R01Route
   '/02': typeof R02Route
+  '/obrigado': typeof ObrigadoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/01': typeof R01Route
   '/02': typeof R02Route
+  '/obrigado': typeof ObrigadoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/01' | '/02'
+  fullPaths: '/' | '/01' | '/02' | '/obrigado'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/01' | '/02'
-  id: '__root__' | '/' | '/01' | '/02'
+  to: '/' | '/01' | '/02' | '/obrigado'
+  id: '__root__' | '/' | '/01' | '/02' | '/obrigado'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R01Route: typeof R01Route
   R02Route: typeof R02Route
+  ObrigadoRoute: typeof ObrigadoRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/obrigado': {
+      id: '/obrigado'
+      path: '/obrigado'
+      fullPath: '/obrigado'
+      preLoaderRoute: typeof ObrigadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/02': {
       id: '/02'
       path: '/02'
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R01Route: R01Route,
   R02Route: R02Route,
+  ObrigadoRoute: ObrigadoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
