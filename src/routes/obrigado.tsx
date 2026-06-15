@@ -28,11 +28,18 @@ export const Route = createFileRoute("/obrigado")({
 });
 
 function ObrigadoPage() {
-  // Dispara a conversão de compra no Meta Pixel ao abrir a página de obrigado.
   useEffect(() => {
-    if (typeof window !== "undefined" && (window as any).fbq) {
+    if (typeof window === "undefined") return;
+    // Dispara a conversão de compra no Meta Pixel ao abrir a página de obrigado.
+    if ((window as any).fbq) {
       (window as any).fbq("track", "Purchase", { value: 19.9, currency: "BRL" });
     }
+    // Redireciona automaticamente para o grupo de WhatsApp apos alguns segundos
+    // (tempo para o Pixel registrar e a pessoa ver a confirmacao).
+    const timer = window.setTimeout(() => {
+      window.location.href = WHATSAPP_GROUP_URL;
+    }, 3000);
+    return () => window.clearTimeout(timer);
   }, []);
 
   const ease = [0.22, 1, 0.36, 1] as const;
@@ -160,6 +167,9 @@ function ObrigadoPage() {
             </svg>
             Entrar no grupo de WhatsApp
           </CtaButton>
+          <p className="text-xs text-gray-500">
+            Você será redirecionado para o grupo automaticamente. Se não acontecer, clique no botão acima.
+          </p>
           <a href="/" className="text-sm font-medium text-gray-400 transition-colors hover:text-white">
             Voltar para o início
           </a>
