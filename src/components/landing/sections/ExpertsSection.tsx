@@ -1,4 +1,4 @@
-import expertsPhoto from "@/assets/especialistas-rodrigo-leonardo-novo-v2.png";
+import expertsPhoto from "@/assets/especialistas-rodrigo-leonardo-novo-v2.jpg";
 import { motion } from "framer-motion";
 import { Award, TrendingUp, Sparkles } from "lucide-react";
 

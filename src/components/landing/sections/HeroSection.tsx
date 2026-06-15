@@ -1,8 +1,8 @@
 import { Check } from "lucide-react";
 import { CtaButton } from "@/components/landing/ui/CtaButton";
 import { TicketCounter } from "@/components/landing/ui/AnimatedCounter";
-import heroBanner from "@/assets/hero-mecanico.png";
-import heroBannerMobile from "@/assets/hero-mobile-banner-v5.png";
+import heroBanner from "@/assets/hero-mecanico.jpg";
+import heroBannerMobile from "@/assets/hero-mobile-banner-v5.jpg";
 import brandLogo from "@/assets/logo-mecanico-que-lucra-nova.png";
 
 export function HeroSection() {
