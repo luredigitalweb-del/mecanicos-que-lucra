@@ -1,9 +1,9 @@
 import { Check } from "lucide-react";
 import { CtaButton } from "@/components/landing/ui/CtaButton";
 import { TicketCounter } from "@/components/landing/ui/AnimatedCounter";
-import heroBanner from "@/assets/hero-mecanico.png.asset.json";
-import heroBannerMobile from "@/assets/hero-mobile-banner-v5.png.asset.json";
-import brandLogo from "@/assets/logo-mecanico-que-lucra-nova.png.asset.json";
+import heroBanner from "@/assets/hero-mecanico.png";
+import heroBannerMobile from "@/assets/hero-mobile-banner-v5.png";
+import brandLogo from "@/assets/logo-mecanico-que-lucra-nova.png";
 
 export function HeroSection() {
   return (
@@ -11,7 +11,7 @@ export function HeroSection() {
       {/* Background image — desktop only */}
       <picture className="absolute inset-0 z-0 hidden md:block">
         <img
-          src={heroBanner.url}
+          src={heroBanner}
           alt="Rodrigo Saddock e Leonardo Gomes em uma oficina mecânica"
           className="hero-backdrop h-full w-full object-cover object-center"
           fetchPriority="high"
@@ -26,7 +26,7 @@ export function HeroSection() {
       <div className="relative z-20 w-full bg-brand-dark md:hidden">
         <div className="relative h-[25rem] overflow-hidden bg-brand-dark">
           <img
-            src={heroBannerMobile.url}
+            src={heroBannerMobile}
             alt="Rodrigo Saddock e Leonardo Gomes em uma oficina mecânica"
             className="hero-mobile-banner h-full w-full object-cover object-top"
             fetchPriority="high"
@@ -38,7 +38,7 @@ export function HeroSection() {
           {/* Centered logo above the conversion panel */}
           <div className="pointer-events-none absolute inset-x-0 bottom-6 flex justify-center">
             <img
-              src={brandLogo.url}
+              src={brandLogo}
               alt=""
               aria-hidden="true"
               className="h-auto w-28 opacity-90"
@@ -94,7 +94,7 @@ export function HeroSection() {
         <div className="flex w-full flex-col items-center md:w-[52%] md:max-w-[650px] md:items-start">
           {/* Logo */}
           <img
-            src={brandLogo.url}
+            src={brandLogo}
             alt="Aulão O Mecânico que Lucra"
             className="hero-reveal hero-reveal-1 mb-4 h-auto w-28 sm:mb-5 sm:w-40 md:mb-7 md:w-40 lg:mb-9 lg:w-48"
           />

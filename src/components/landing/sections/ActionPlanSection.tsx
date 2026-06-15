@@ -1,5 +1,5 @@
 import { CtaButton } from "@/components/landing/ui/CtaButton";
-import brandLogo from "@/assets/logo-mecanico-que-lucra.png.asset.json";
+import brandLogo from "@/assets/logo-mecanico-que-lucra.png";
 
 export function ActionPlanSection() {
   return (
@@ -17,7 +17,7 @@ export function ActionPlanSection() {
             {/* Logo */}
             <div className="mb-8 flex justify-center">
               <img
-                src={brandLogo.url}
+                src={brandLogo}
                 alt="Aulão O Mecânico que Lucra"
                 className="h-auto w-40 sm:w-52"
               />

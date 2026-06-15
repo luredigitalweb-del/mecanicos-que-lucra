@@ -1,5 +1,5 @@
-import danilloProof from "@/assets/depoimento-danillo.png.asset.json";
-import pamelaProof from "@/assets/depoimento-pamela.png.asset.json";
+import danilloProof from "@/assets/depoimento-danillo.png";
+import pamelaProof from "@/assets/depoimento-pamela.png";
 
 const testimonials = [
   {
@@ -20,7 +20,7 @@ const testimonials = [
     name: "Danillo Santos",
     quote:
       "Eu precisava acordar, estava direcionado à falência. Só agora percebi o tanto de coisa que estava fazendo errado.",
-    image: danilloProof.url,
+    image: danilloProof,
     imageAlt: "Mensagem de Danillo Santos sobre o impacto do treinamento",
   },
   {
@@ -29,7 +29,7 @@ const testimonials = [
     name: "Pâmela Martins",
     quote:
       "Dois dias incríveis de muito conhecimento. Me sinto um avatar perto das oficinas da minha cidade; vejo que a maioria não trabalha dessa forma.",
-    image: pamelaProof.url,
+    image: pamelaProof,
     imageAlt: "Mensagem de Pâmela Martins elogiando o treinamento",
   },
 ];

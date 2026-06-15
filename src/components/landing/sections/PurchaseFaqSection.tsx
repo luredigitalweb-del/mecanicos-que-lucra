@@ -1,6 +1,6 @@
 import { Check, ShieldCheck, Sparkles, Zap, Clock, Flame } from "lucide-react";
 import { motion } from "framer-motion";
-import brandLogo from "@/assets/logo-mecanico-que-lucra-nova.png.asset.json";
+import brandLogo from "@/assets/logo-mecanico-que-lucra-nova.png";
 import { CtaButton } from "@/components/landing/ui/CtaButton";
 import {
   Accordion,
@@ -110,7 +110,7 @@ export function PurchaseFaqSection() {
                 <Sparkles className="h-3 w-3 text-brand-yellow" />
               </motion.div>
               <img
-                src={brandLogo.url}
+                src={brandLogo}
                 alt="Aulão O Mecânico que Lucra"
                 className="relative mx-auto h-auto w-64 drop-shadow-2xl sm:w-72"
                 loading="lazy"

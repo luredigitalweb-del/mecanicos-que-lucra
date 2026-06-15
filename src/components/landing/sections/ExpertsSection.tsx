@@ -1,4 +1,4 @@
-import expertsPhoto from "@/assets/especialistas-rodrigo-leonardo-novo-v2.png.asset.json";
+import expertsPhoto from "@/assets/especialistas-rodrigo-leonardo-novo-v2.png";
 import { motion } from "framer-motion";
 import { Award, TrendingUp, Sparkles } from "lucide-react";
 
@@ -90,7 +90,7 @@ export function ExpertsSection() {
             className="group relative z-10 aspect-[3/4] overflow-hidden rounded-[2rem] border border-brand-white/10 bg-brand-dark-secondary shadow-[0_28px_80px_-32px_color-mix(in_oklab,var(--color-brand-dark)_90%,transparent)]"
           >
             <img
-              src={expertsPhoto.url}
+              src={expertsPhoto}
               alt="Rodrigo Saddock e Leonardo Gomes, especialistas em gestão de oficinas"
               className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.025]"
               loading="lazy"
