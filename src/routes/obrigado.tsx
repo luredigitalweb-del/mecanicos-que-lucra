@@ -1,11 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import brandLogo from "@/assets/logo-mecanico-que-lucra-nova.png";
 import { CtaButton } from "@/components/landing/ui/CtaButton";
-
-// Troque pelo link real do seu grupo de WhatsApp / comunidade do aulão.
-const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/";
 
 export const Route = createFileRoute("/obrigado")({
   head: () => ({
@@ -150,12 +147,9 @@ function ObrigadoPage() {
         </motion.p>
 
         <motion.div variants={item} className="mt-9 w-full max-w-md">
-          <CtaButton href={WHATSAPP_GROUP_URL} size="xl" arrow={false} className="w-full">
-            Entrar no grupo de WhatsApp
+          <CtaButton href="/" size="xl" className="w-full">
+            Voltar para o início
           </CtaButton>
-          <p className="mt-3 text-xs text-gray-500">
-            Garanta o acesso às aulas ao vivo e aos avisos importantes.
-          </p>
         </motion.div>
 
         {/* Lembrete das datas */}
@@ -170,18 +164,6 @@ function ObrigadoPage() {
             27, 28 e 29 de julho
           </p>
           <p className="mt-1 text-sm text-gray-300">Sempre das 19h às 22h, ao vivo.</p>
-        </motion.div>
-
-        <motion.div variants={item}>
-          <Link
-            to="/"
-            className="mt-10 inline-flex items-center gap-1.5 text-sm font-medium text-gray-400 transition-colors hover:text-white"
-          >
-            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-            </svg>
-            Voltar para a página inicial
-          </Link>
         </motion.div>
       </motion.section>
 
