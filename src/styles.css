@@ -1,0 +1,466 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Brand Design System - Mkt Cheio de Graxa */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand Colors */
+  --color-brand-yellow: #F85A0B;
+  --color-brand-yellow-light: #FF7629;
+  --color-brand-yellow-dark: #D83E00;
+  --color-brand-blackout: #000000;
+  --color-brand-dark: #161616;
+  --color-brand-dark-secondary: #1E1E1E;
+  --color-brand-gray: #2A2A2A;
+  --color-brand-gray-light: #3A3A3A;
+  --color-brand-white: #FFFFFF;
+  --color-brand-offwhite: #F5F5F0;
+
+  /* Semantic Brand */
+  --color-cta: #F85A0B;
+  --color-cta-hover: #FF7629;
+  --color-cta-text: #161616;
+  --color-surface: #161616;
+  --color-surface-light: #1E1E1E;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #B0B0B0;
+  --color-text-muted: #808080;
+  --color-highlight-bg: #F85A0B;
+  --color-highlight-text: #161616;
+}
+
+:root {
+  --radius: 0.5rem;
+  --background: #161616;
+  --foreground: #FFFFFF;
+  --card: #1E1E1E;
+  --card-foreground: #FFFFFF;
+  --popover: #1E1E1E;
+  --popover-foreground: #FFFFFF;
+  --primary: #F85A0B;
+  --primary-foreground: #161616;
+  --secondary: #2A2A2A;
+  --secondary-foreground: #FFFFFF;
+  --muted: #2A2A2A;
+  --muted-foreground: #B0B0B0;
+  --accent: #F85A0B;
+  --accent-foreground: #161616;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #3A3A3A;
+  --input: #2A2A2A;
+  --ring: #F85A0B;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', system-ui, sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .font-sora {
+    font-family: 'Sora', system-ui, sans-serif;
+  }
+
+  .font-inter {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .bg-brand-dark {
+    background-color: #161616;
+  }
+
+  .bg-brand-blackout {
+    background-color: #000000;
+  }
+
+  .bg-brand-dark-secondary {
+    background-color: #1E1E1E;
+  }
+
+  .bg-brand-yellow {
+    background-color: #F85A0B;
+  }
+
+  .text-brand-yellow {
+    color: #F85A0B;
+  }
+
+  .text-brand-dark {
+    color: #161616;
+  }
+
+  .border-brand-yellow {
+    border-color: #F85A0B;
+  }
+
+  .highlight-box {
+    color: inherit;
+    font-weight: 800;
+    background-image: none;
+    padding: 0;
+  }
+
+  .cta-pulse {
+    animation: cta-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes cta-pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(248, 90, 11, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 20px 8px rgba(248, 90, 11, 0.2);
+    }
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #F85A0B 0%, #FF7629 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .build-grid {
+    background-image:
+      linear-gradient(color-mix(in oklab, var(--color-brand-yellow) 35%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklab, var(--color-brand-yellow) 35%, transparent) 1px, transparent 1px);
+    background-size: 52px 52px;
+    mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  }
+
+  .experts-grid {
+    background-image: radial-gradient(circle, color-mix(in oklab, var(--color-brand-yellow) 45%, transparent) 1px, transparent 1px);
+    background-size: 22px 22px;
+    mask-image: linear-gradient(to right, black, transparent 85%);
+  }
+
+  .offer-card-enter {
+    animation: offer-card-enter 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .offer-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .offer-shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 35%;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--color-brand-white) 45%, transparent), transparent);
+    transform: translateX(-180%) skewX(-18deg);
+    animation: offer-shimmer 3.2s ease-in-out infinite;
+  }
+
+  @keyframes offer-card-enter {
+    from { opacity: 0; transform: translateY(28px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @keyframes offer-shimmer {
+    0%, 55% { transform: translateX(-180%) skewX(-18deg); }
+    85%, 100% { transform: translateX(380%) skewX(-18deg); }
+  }
+
+  @keyframes pain-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  .build-reveal,
+  .build-card {
+    animation: build-reveal 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .build-card:nth-of-type(1) { animation-delay: 120ms; }
+  .build-card:nth-of-type(2) { animation-delay: 250ms; }
+  .build-card:nth-of-type(3) { animation-delay: 380ms; }
+  .build-card:nth-of-type(4) { animation-delay: 510ms; }
+
+  .build-scan {
+    animation: build-scan 5s ease-in-out infinite;
+    box-shadow: 0 0 24px color-mix(in oklab, var(--color-brand-yellow) 55%, transparent);
+  }
+
+  .build-orb {
+    animation: build-orb 7s ease-in-out infinite;
+  }
+
+  .build-orb-delay {
+    animation-delay: -3.5s;
+  }
+
+  @keyframes build-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+      filter: blur(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes build-scan {
+    0%, 100% { transform: translateY(0); opacity: 0; }
+    15% { opacity: 0.7; }
+    85% { opacity: 0.25; }
+    90% { transform: translateY(760px); opacity: 0; }
+  }
+
+  @keyframes build-orb {
+    0%, 100% { transform: scale(0.9); opacity: 0.45; }
+    50% { transform: scale(1.15); opacity: 0.85; }
+  }
+
+  .hero-backdrop {
+    animation: hero-backdrop 9s ease-out both;
+  }
+
+  .hero-mobile-banner {
+    animation: hero-mobile-cinema 8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    filter: saturate(1.08) contrast(1.04);
+    will-change: transform, filter;
+  }
+
+  .hero-mobile-glow {
+    animation: hero-mobile-glow 3.8s ease-in-out infinite;
+  }
+
+  .hero-logo-float {
+    animation: hero-logo-float 4s ease-in-out infinite;
+  }
+
+  .hero-reveal {
+    animation: hero-reveal 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-reveal-1 { animation-delay: 100ms; }
+  .hero-reveal-2 { animation-delay: 230ms; }
+  .hero-reveal-3 { animation-delay: 360ms; }
+  .hero-reveal-4 { animation-delay: 490ms; }
+  .hero-reveal-5 { animation-delay: 620ms; }
+
+  .ambient-float {
+    animation: ambient-float 7s ease-in-out infinite;
+  }
+
+  .ambient-float-delay {
+    animation-delay: -3.5s;
+  }
+
+  .ambient-spin {
+    animation: ambient-spin 22s linear infinite;
+  }
+
+  .animated-border::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background: linear-gradient(115deg, transparent 30%, color-mix(in oklab, var(--color-brand-yellow) 24%, transparent), transparent 70%);
+    transform: translateX(-120%);
+    animation: animated-border 5s ease-in-out infinite;
+  }
+
+  .cta-shimmer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 38%;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--color-brand-white) 55%, transparent), transparent);
+    transform: translateX(-180%) skewX(-20deg);
+    animation: cta-shimmer 3.4s ease-in-out infinite;
+  }
+
+  .progress-track {
+    box-shadow: inset 0 1px 3px color-mix(in oklab, var(--color-brand-dark) 75%, transparent);
+  }
+
+  .progress-fill {
+    position: relative;
+    width: 0;
+    overflow: hidden;
+    transition: none;
+  }
+
+  .progress-fill.animate {
+    animation: progress-grow 1.5s cubic-bezier(0.22, 1, 0.36, 1) both, progress-glow 2.2s ease-in-out 1.5s infinite;
+    box-shadow: 0 0 16px color-mix(in oklab, var(--color-brand-yellow) 65%, transparent);
+  }
+
+  .progress-fill.animate::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--color-brand-white) 38%, transparent), transparent);
+    transform: translateX(-100%);
+    animation: progress-sweep 2.8s ease-in-out 1.2s infinite;
+  }
+
+  @keyframes hero-backdrop {
+    from { transform: scale(1.07); filter: saturate(0.78) brightness(0.82); }
+    to { transform: scale(1); filter: saturate(1) brightness(1); }
+  }
+
+  @keyframes hero-mobile-cinema {
+    from { transform: scale(1.09); filter: saturate(0.72) brightness(0.76) contrast(1.12); }
+    to { transform: scale(1); filter: saturate(1.08) brightness(1) contrast(1.04); }
+  }
+
+  @keyframes hero-mobile-glow {
+    0%, 100% { opacity: 0.35; transform: scale(0.86); }
+    50% { opacity: 0.7; transform: scale(1.08); }
+  }
+
+  @keyframes hero-logo-float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-4px); }
+  }
+
+  @keyframes hero-reveal {
+    from { opacity: 0; transform: translateX(-28px); filter: blur(5px); }
+    to { opacity: 1; transform: translateX(0); filter: blur(0); }
+  }
+
+  @keyframes ambient-float {
+    0%, 100% { transform: translateY(-50%) translateX(0) scale(1); }
+    50% { transform: translateY(calc(-50% - 14px)) translateX(10px) scale(1.04); }
+  }
+
+  @keyframes ambient-spin {
+    from { transform: rotate(12deg); }
+    to { transform: rotate(372deg); }
+  }
+
+  @keyframes animated-border {
+    0%, 55% { transform: translateX(-120%); }
+    85%, 100% { transform: translateX(120%); }
+  }
+
+  @keyframes cta-shimmer {
+    0%, 52% { transform: translateX(-180%) skewX(-20deg); }
+    82%, 100% { transform: translateX(380%) skewX(-20deg); }
+  }
+
+  @keyframes progress-grow {
+    from { width: 0; }
+    to { width: var(--progress-width); }
+  }
+
+  @keyframes progress-glow {
+    0%, 100% { box-shadow: 0 0 8px color-mix(in oklab, var(--color-brand-yellow) 35%, transparent); }
+    50% { box-shadow: 0 0 22px color-mix(in oklab, var(--color-brand-yellow) 78%, transparent); }
+  }
+
+  @keyframes progress-sweep {
+    0%, 45% { transform: translateX(-100%); }
+    80%, 100% { transform: translateX(120%); }
+  }
+
+  @keyframes ticket-roll {
+    0% { transform: translateY(0); }
+    20% { transform: translateY(calc(var(--digit-target, 0) * -10% - 300%)); }
+    100% { transform: translateY(calc(var(--digit-target, 0) * -10%)); }
+  }
+
+  .ticket-digit-container {
+    --digit-target: 0;
+  }
+
+  .ticket-digit-roll {
+    will-change: transform;
+  }
+
+  @keyframes ticket-flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .build-reveal,
+    .build-card,
+    .build-scan,
+    .build-orb,
+    .hero-backdrop,
+    .hero-mobile-banner,
+    .hero-mobile-glow,
+    .hero-logo-float,
+    .hero-reveal,
+    .ambient-float,
+    .ambient-spin,
+    .animated-border::after,
+    .cta-shimmer::before,
+    .progress-fill,
+    .progress-fill::after,
+    .ticket-digit-roll {
+      animation: none;
+    }
+    .ticket-digit-roll {
+      transform: translateY(calc(var(--digit-target, 0) * -10%));
+    }
+  }
+}
