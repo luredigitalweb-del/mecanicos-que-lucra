@@ -208,9 +208,6 @@ export function PurchaseFaqSection() {
 
         <div className="mx-auto max-w-5xl">
           <div className="mb-9 text-center sm:mb-10">
-            <p className="mb-3 font-sora text-xs font-extrabold uppercase tracking-[0.24em] text-brand-yellow sm:text-sm">
-              Nona dobra
-            </p>
             <h2 className="font-sora text-3xl font-extrabold leading-tight tracking-tight text-brand-dark sm:text-5xl">
               Responda suas dúvidas aqui ↓
             </h2>
