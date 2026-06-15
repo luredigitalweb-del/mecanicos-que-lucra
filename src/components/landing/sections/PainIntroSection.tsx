@@ -31,25 +31,25 @@ const scaleVariants = {
 
 export function PainIntroSection() {
   return (
-    <section className="relative overflow-hidden bg-brand-yellow px-5 py-20 text-brand-dark sm:px-8 md:py-28">
+    <section className="relative overflow-hidden bg-brand-dark px-5 py-20 text-brand-white sm:px-8 md:py-28">
       {/* Grid de fundo */}
-      <div className="pointer-events-none absolute inset-0 opacity-20 [background-image:radial-gradient(var(--color-brand-dark)_1px,transparent_1px)] [background-size:24px_24px]" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.12] [background-image:radial-gradient(var(--color-brand-yellow)_1px,transparent_1px)] [background-size:24px_24px]" />
 
       {/* Círculos decorativos animados */}
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="pointer-events-none absolute -left-20 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full border border-brand-dark/20"
+        className="pointer-events-none absolute -left-20 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full border border-brand-yellow/15"
       />
       <motion.div
         animate={{ rotate: -360 }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        className="pointer-events-none absolute -left-10 top-1/2 h-52 w-52 -translate-y-1/2 rounded-full border border-brand-dark/20"
+        className="pointer-events-none absolute -left-10 top-1/2 h-52 w-52 -translate-y-1/2 rounded-full border border-brand-yellow/15"
       />
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-        className="pointer-events-none absolute -right-24 top-10 h-64 w-64 rotate-12 border border-brand-dark/20"
+        className="pointer-events-none absolute -right-24 top-10 h-64 w-64 rotate-12 border border-brand-yellow/15"
       />
 
       <motion.div
@@ -80,7 +80,7 @@ export function PainIntroSection() {
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
-              className="absolute -bottom-1 left-0 h-1.5 w-full origin-left bg-brand-dark"
+              className="absolute -bottom-1 left-0 h-1.5 w-full origin-left bg-brand-yellow"
             />
           </span>
           .
@@ -95,7 +95,7 @@ export function PainIntroSection() {
           <motion.div
             variants={scaleVariants}
             whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-            className="relative border-y border-brand-dark/30 py-6 md:text-left"
+            className="relative border-y border-brand-white/15 py-6 md:text-left"
           >
             <motion.span
               variants={itemVariants}
@@ -120,7 +120,7 @@ export function PainIntroSection() {
           <motion.div
             variants={scaleVariants}
             whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-            className="relative border-y border-brand-dark/30 py-6 md:text-left"
+            className="relative border-y border-brand-white/15 py-6 md:text-left"
           >
             <motion.span
               variants={itemVariants}
@@ -139,13 +139,13 @@ export function PainIntroSection() {
                   ],
                 }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="relative inline-block font-extrabold"
+                className="relative inline-block font-extrabold text-brand-yellow"
               >
                 o dinheiro não sobra.
                 <motion.span
                   animate={{ opacity: [0.3, 0.6, 0.3] }}
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -inset-1 -z-10 rounded bg-brand-dark/10"
+                  className="absolute -inset-1 -z-10 rounded bg-brand-yellow/15"
                 />
               </motion.strong>
             </p>
@@ -167,7 +167,7 @@ export function PainIntroSection() {
         >
           <motion.p
             variants={itemVariants}
-            className="font-sora text-xl font-medium leading-snug text-brand-dark/80 sm:text-2xl md:text-4xl"
+            className="font-sora text-xl font-medium leading-snug text-brand-white/70 sm:text-2xl md:text-4xl"
           >
             Mas chegou num ponto onde
           </motion.p>
@@ -179,7 +179,7 @@ export function PainIntroSection() {
             <span className="relative inline-block">
               {/* Texto com shimmer */}
               <span
-                className="relative bg-[linear-gradient(110deg,var(--color-brand-dark)_45%,rgba(0,0,0,0.35)_55%,var(--color-brand-dark)_65%)] bg-[length:250%_100%] bg-clip-text text-transparent"
+                className="relative bg-[linear-gradient(110deg,var(--color-brand-white)_45%,rgba(255,255,255,0.4)_55%,var(--color-brand-white)_65%)] bg-[length:250%_100%] bg-clip-text text-transparent"
                 style={{
                   animation: "pain-shimmer 3.5s linear infinite",
                 }}
@@ -222,7 +222,7 @@ export function PainIntroSection() {
               transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
               className="inline-block h-2 w-2 rounded-full bg-[#E63946]"
             />
-            <span className="font-sora text-xs font-bold uppercase tracking-[0.25em] text-brand-dark/70 sm:text-sm">
+            <span className="font-sora text-xs font-bold uppercase tracking-[0.25em] text-brand-white/60 sm:text-sm">
               É hora de mudar o jogo
             </span>
             <motion.span
@@ -238,7 +238,7 @@ export function PainIntroSection() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
-            className="mx-auto mt-8 h-1 w-20 origin-center bg-brand-dark"
+            className="mx-auto mt-8 h-1 w-20 origin-center bg-brand-yellow"
           />
         </motion.div>
       </motion.div>
