@@ -77,7 +77,7 @@ export function HeroSection() {
             </div>
             <div className="hero-reveal hero-reveal-5">
               <CtaButton
-                href="https://pay.assiny.com.br/033c16/node/bkMCuu"
+                href="#oferta"
                 size="xl"
                 pulse={false}
                 className="min-h-[3rem] rounded-xl bg-brand-yellow text-brand-dark shadow-[0_14px_38px_color-mix(in_oklab,var(--color-brand-yellow)_32%,transparent)] hover:bg-brand-yellow-light hover:shadow-[0_18px_46px_color-mix(in_oklab,var(--color-brand-yellow)_45%,transparent)]"
@@ -133,7 +133,7 @@ export function HeroSection() {
           {/* CTA */}
           <div className="hero-reveal hero-reveal-6 mb-2 w-full sm:mb-2 md:order-5 md:mb-8 md:w-auto">
             <CtaButton
-              href="https://pay.assiny.com.br/033c16/node/bkMCuu"
+              href="#oferta"
               size="xl"
               pulse
               className="rounded-xl shadow-[0_14px_38px_color-mix(in_oklab,var(--color-brand-yellow)_28%,transparent)]"
