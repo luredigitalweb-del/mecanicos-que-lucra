@@ -61,7 +61,7 @@ function ObrigadoPage() {
     left: `${(i * 6.25 + 4) % 100}%`,
     delay: 0.4 + (i % 8) * 0.12,
     duration: 2.6 + (i % 5) * 0.45,
-    color: i % 3 === 0 ? "#f83600" : i % 3 === 1 ? "#FF7629" : "#FFFFFF",
+    color: i % 3 === 0 ? "#F85A0B" : i % 3 === 1 ? "#FF7629" : "#FFFFFF",
     rotate: i % 2 === 0 ? 360 : -360,
     size: 7 + (i % 3) * 3,
   }));

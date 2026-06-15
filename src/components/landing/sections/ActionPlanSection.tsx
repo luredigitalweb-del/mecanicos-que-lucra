@@ -9,7 +9,7 @@ export function ActionPlanSection() {
       <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-brand-yellow/10 blur-[100px]" />
 
       <div className="relative z-10 mx-auto max-w-4xl">
-        <div className="action-plan-reveal mx-auto overflow-hidden rounded-3xl border border-gray-200/80 bg-white shadow-[0_8px_40px_-12px_rgba(0,0,0,0.12)] transition-all duration-500 hover:shadow-[0_12px_50px_-12px_rgba(248,54,0,0.18)]">
+        <div className="action-plan-reveal mx-auto overflow-hidden rounded-3xl border border-gray-200/80 bg-white shadow-[0_8px_40px_-12px_rgba(0,0,0,0.12)] transition-all duration-500 hover:shadow-[0_12px_50px_-12px_rgba(248,90,11,0.18)]">
           {/* Top accent bar */}
           <div className="h-1.5 w-full bg-gradient-to-r from-brand-yellow via-brand-yellow-light to-brand-yellow" />
 
