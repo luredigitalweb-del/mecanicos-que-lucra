@@ -38,7 +38,7 @@ function ObrigadoPage() {
     // (tempo para o Pixel registrar e a pessoa ver a confirmacao).
     const timer = window.setTimeout(() => {
       window.location.href = WHATSAPP_GROUP_URL;
-    }, 3000);
+    }, 1500);
     return () => window.clearTimeout(timer);
   }, []);
 
