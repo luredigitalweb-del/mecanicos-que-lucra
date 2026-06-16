@@ -186,7 +186,7 @@ function ObrigadoPage() {
           <p className="mt-2 font-sora text-xl font-extrabold text-white sm:text-2xl">
             27, 28 e 29 de julho
           </p>
-          <p className="mt-1 text-sm text-gray-300">Sempre das 19h às 22h, ao vivo.</p>
+          <p className="mt-1 text-sm text-gray-300">Sempre a partir das 19h, ao vivo.</p>
         </motion.div>
       </motion.section>
 

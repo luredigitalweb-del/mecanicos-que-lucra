@@ -1,4 +1,4 @@
-import { Check, ShieldCheck, Sparkles, Zap, Clock, Flame } from "lucide-react";
+import { Check, ShieldCheck, Sparkles, Zap, Clock, Flame, CalendarDays } from "lucide-react";
 import { motion } from "framer-motion";
 import brandLogo from "@/assets/logo-mecanico-que-lucra-nova.png";
 import { CtaButton } from "@/components/landing/ui/CtaButton";
@@ -122,9 +122,40 @@ export function PurchaseFaqSection() {
               <p className="mb-2 flex items-center justify-center gap-2 text-center font-sora text-[11px] font-extrabold uppercase tracking-[0.2em] text-brand-yellow">
                 <Zap className="h-3.5 w-3.5 fill-brand-yellow" /> Comprando agora você leva
               </p>
-              <h2 className="mb-7 text-center font-sora text-2xl font-extrabold leading-tight text-brand-dark sm:text-3xl">
+              <h2 className="mb-5 text-center font-sora text-2xl font-extrabold leading-tight text-brand-dark sm:text-3xl">
                 01 ingresso para o Aulão<br />O Mecânico que Lucra
               </h2>
+
+              {/* AO VIVO + data e hora — edite a data/horário abaixo */}
+              <div className="mb-7 flex flex-col items-center gap-3">
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.25, duration: 0.4 }}
+                  className="flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-3.5 py-1.5 font-sora text-[11px] font-extrabold uppercase tracking-[0.18em] text-red-600"
+                >
+                  <span className="relative flex h-2.5 w-2.5">
+                    <motion.span
+                      className="absolute inline-flex h-full w-full rounded-full bg-red-500"
+                      animate={{ scale: [1, 2.2], opacity: [0.7, 0] }}
+                      transition={{ duration: 1.4, repeat: Infinity, ease: "easeOut" }}
+                    />
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500" />
+                  </span>
+                  Ao vivo
+                </motion.span>
+                <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 text-sm font-bold text-brand-dark">
+                  <span className="flex items-center gap-2">
+                    <CalendarDays className="h-4 w-4 text-brand-yellow" />
+                    27, 28 e 29 de julho de 2026
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <Clock className="h-4 w-4 text-brand-yellow" />
+                    a partir das 19h
+                  </span>
+                </div>
+              </div>
 
               <div className="mb-8 space-y-3">
                 {[

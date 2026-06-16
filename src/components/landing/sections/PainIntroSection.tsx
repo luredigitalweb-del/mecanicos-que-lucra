@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { CalendarDays, Clock } from "lucide-react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -240,6 +241,37 @@ export function PainIntroSection() {
             transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
             className="mx-auto mt-8 h-1 w-20 origin-center bg-brand-yellow"
           />
+
+          {/* AO VIVO + data e hora */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 1.5 }}
+            className="mt-8 flex flex-col items-center gap-3"
+          >
+            <span className="flex items-center gap-2 rounded-full border border-[#E63946]/40 bg-[#E63946]/10 px-3.5 py-1.5 font-sora text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#ff6b75]">
+              <span className="relative flex h-2.5 w-2.5">
+                <motion.span
+                  className="absolute inline-flex h-full w-full rounded-full bg-[#E63946]"
+                  animate={{ scale: [1, 2.2], opacity: [0.7, 0] }}
+                  transition={{ duration: 1.4, repeat: Infinity, ease: "easeOut" }}
+                />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#E63946]" />
+              </span>
+              Ao vivo
+            </span>
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 font-sora text-sm font-bold text-brand-white sm:text-base">
+              <span className="flex items-center gap-2">
+                <CalendarDays className="h-4 w-4 text-brand-yellow" />
+                27, 28 e 29 de julho
+              </span>
+              <span className="flex items-center gap-2">
+                <Clock className="h-4 w-4 text-brand-yellow" />
+                a partir das 19h
+              </span>
+            </div>
+          </motion.div>
         </motion.div>
       </motion.div>
     </section>

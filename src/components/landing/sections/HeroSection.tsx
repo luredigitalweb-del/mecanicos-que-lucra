@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import { Check, CalendarDays, Clock } from "lucide-react";
 import { CtaButton } from "@/components/landing/ui/CtaButton";
 import { TicketCounter } from "@/components/landing/ui/AnimatedCounter";
 import heroBanner from "@/assets/hero-mecanico.jpg";
@@ -75,6 +75,22 @@ export function HeroSection() {
                 </span>
               ))}
             </div>
+            <div className="hero-reveal hero-reveal-5 mb-5 flex flex-col items-center gap-2 text-sm font-bold text-brand-white">
+              <span className="flex items-center gap-2 rounded-full border border-[#E63946]/40 bg-[#E63946]/15 px-3 py-1 font-sora text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#ff6b75]">
+                <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-[#E63946]" />
+                Ao vivo
+              </span>
+              <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+                <span className="flex items-center gap-1.5">
+                  <CalendarDays className="h-4 w-4 text-brand-yellow" />
+                  27, 28 e 29 de julho de 2026
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <Clock className="h-4 w-4 text-brand-yellow" />
+                  a partir das 19h
+                </span>
+              </div>
+            </div>
             <div className="hero-reveal hero-reveal-5">
               <CtaButton
                 href="#oferta"
@@ -128,6 +144,24 @@ export function HeroSection() {
                 {item}
               </span>
             ))}
+          </div>
+
+          {/* Data e hora */}
+          <div className="hero-reveal hero-reveal-6 mb-6 flex flex-col items-center gap-2 text-sm font-bold text-brand-white sm:text-base md:order-[4.5] md:mb-7 md:items-start">
+            <span className="flex items-center gap-2 rounded-full border border-[#E63946]/40 bg-[#E63946]/15 px-3 py-1 font-sora text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#ff6b75]">
+              <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-[#E63946]" />
+              Ao vivo
+            </span>
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 md:justify-start">
+              <span className="flex items-center gap-1.5">
+                <CalendarDays className="h-4 w-4 text-brand-yellow" />
+                27, 28 e 29 de julho de 2026
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Clock className="h-4 w-4 text-brand-yellow" />
+                a partir das 19h
+              </span>
+            </div>
           </div>
 
           {/* CTA */}

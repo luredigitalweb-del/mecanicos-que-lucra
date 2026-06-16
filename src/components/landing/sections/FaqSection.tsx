@@ -8,7 +8,7 @@ const faqs = [
   },
   {
     question: "Quando acontecem as aulas ao vivo?",
-    answer: "Os 3 dias de aulão acontecem nos dias 20, 21 e 22 de julho, sempre às 20h (horário de Brasília). Todas as aulas ficam gravadas por 30 dias para você assistir quantas vezes quiser.",
+    answer: "Os 3 dias de aulão acontecem nos dias 27, 28 e 29 de julho, sempre a partir das 19h (horário de Brasília). Todas as aulas ficam gravadas por 30 dias para você assistir quantas vezes quiser.",
   },
   {
     question: "E se eu não puder assistir ao vivo?",
