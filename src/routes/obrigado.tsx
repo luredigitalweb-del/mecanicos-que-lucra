@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import brandLogo from "@/assets/logo-mecanico-que-lucra-nova.png";
 import { CtaButton } from "@/components/landing/ui/CtaButton";
 
-const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/LAUOgTiC2cR7IMrUzNBmpO?mode=gi_t";
+const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfgwr7JnZyuia6wpc7Y3825HIBZLN7Ka7498Ax29gvSyTxRqg/viewform";
 
 export const Route = createFileRoute("/obrigado")({
   head: () => ({
@@ -34,11 +34,11 @@ function ObrigadoPage() {
     if ((window as any).fbq) {
       (window as any).fbq("track", "Purchase", { value: 19.9, currency: "BRL" });
     }
-    // Redireciona automaticamente para o grupo de WhatsApp apos alguns segundos
+    // Redireciona automaticamente para o formulario apos 5 segundos
     // (tempo para o Pixel registrar e a pessoa ver a confirmacao).
     const timer = window.setTimeout(() => {
-      window.location.href = WHATSAPP_GROUP_URL;
-    }, 1500);
+      window.location.href = FORM_URL;
+    }, 5000);
     return () => window.clearTimeout(timer);
   }, []);
 
@@ -157,18 +157,18 @@ function ObrigadoPage() {
 
         <motion.div variants={item} className="mt-9 flex w-full max-w-md flex-col items-center gap-4">
           <CtaButton
-            href={WHATSAPP_GROUP_URL}
+            href={FORM_URL}
             size="xl"
             arrow={false}
             className="w-full"
           >
-            <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 18.02h-.01a8.2 8.2 0 01-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.18 8.18 0 01-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 012.41 5.82c0 4.54-3.69 8.23-8.23 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z" />
+            <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
-            Entrar no grupo de WhatsApp
+            Preencher formulário
           </CtaButton>
           <p className="text-xs text-gray-500">
-            Você será redirecionado para o grupo automaticamente. Se não acontecer, clique no botão acima.
+            Você será redirecionado para o formulário automaticamente. Se não acontecer, clique no botão acima.
           </p>
           <a href="/" className="text-sm font-medium text-gray-400 transition-colors hover:text-white">
             Voltar para o início
