@@ -16,9 +16,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Aulão O Mecânico que Lucra | Rodrigo Saddock & Leonardo Gomes" },
-      { name: "description", content: "Aulão ao vivo de 3 dias para donos de oficina mecânica e centros automotivos. Aprenda o passo a passo para fazer sua oficina lucrar mais. Apenas R$ 19,90." },
+      { name: "description", content: "Aulão ao vivo de 3 dias para donos de oficina mecânica e centros automotivos. Aprenda o passo a passo para fazer sua oficina lucrar mais. Apenas R$ 27,00." },
       { property: "og:title", content: "Aulão O Mecânico que Lucra — 3 Dias para Transformar sua Oficina" },
-      { property: "og:description", content: "Aulão ao vivo de 3 dias para donos de oficina mecânica. Aprenda o passo a passo para fazer sua oficina lucrar mais. Apenas R$ 19,90." },
+      { property: "og:description", content: "Aulão ao vivo de 3 dias para donos de oficina mecânica. Aprenda o passo a passo para fazer sua oficina lucrar mais. Apenas R$ 27,00." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

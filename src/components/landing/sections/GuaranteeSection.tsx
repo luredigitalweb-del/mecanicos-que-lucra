@@ -16,7 +16,7 @@ export function GuaranteeSection() {
           </h2>
 
           <p className="text-brand-dark/80 text-lg mb-4">
-            Se você assistir o aulão completo e achar que não valeu o investimento de R$ 19,90, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.
+            Se você assistir o aulão completo e achar que não valeu o investimento de R$ 27,00, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.
           </p>
 
           <p className="text-brand-dark/60 text-sm">
