@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 import { capturarUtms } from "@/lib/utm";
+import { FloatingWhatsApp } from "@/components/landing/ui/FloatingWhatsApp";
 
 function NotFoundComponent() {
   return (
@@ -118,6 +119,7 @@ function RootComponent() {
       <HeadContent />
       <MetaPixelTracker />
       <Outlet />
+      <FloatingWhatsApp />
     </QueryClientProvider>
   );
 }
