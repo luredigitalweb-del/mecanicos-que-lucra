@@ -30,12 +30,7 @@ export const Route = createFileRoute("/obrigado")({
 function ObrigadoPage() {
   useEffect(() => {
     if (typeof window === "undefined") return;
-    // Dispara a conversão de compra no Meta Pixel ao abrir a página de obrigado.
-    if ((window as any).fbq) {
-      (window as any).fbq("track", "Purchase", { value: 19.9, currency: "BRL" });
-    }
-    // Redireciona automaticamente para o formulario apos 10 segundos
-    // (tempo para o Pixel registrar e a pessoa ver a confirmacao).
+    // Redireciona automaticamente para o formulario apos 10 segundos.
     const timer = window.setTimeout(() => {
       window.location.href = FORM_URL;
     }, 10000);
