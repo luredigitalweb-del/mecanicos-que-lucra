@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     question: "Como funciona a garantia?",
-    answer: "Você tem 7 dias de garantia incondicional. Se assistir o aulão e achar que não valeu os R$ 27,00, devolvemos 100% do seu dinheiro. Basta enviar um e-mail — sem perguntas, sem burocracia.",
+    answer: "Você tem 7 dias de garantia incondicional. Se assistir o aulão e achar que não valeu os R$ 37,00, devolvemos 100% do seu dinheiro. Basta enviar um e-mail — sem perguntas, sem burocracia.",
   },
   {
     question: "Para que tipo de oficina serve?",

@@ -41,7 +41,7 @@ export function UrgencySection() {
               <span className="text-gray-500 line-through text-lg">R$ 197,00</span>
             </div>
             <p className="text-5xl md:text-6xl font-extrabold text-brand-yellow font-sora mb-2">
-              R$ 27,00
+              R$ 37,00
             </p>
             <p className="text-gray-400 text-sm mb-6">ou 1x no cartão • Acesso vitalício</p>
 
@@ -81,7 +81,7 @@ export function UrgencySection() {
             Valor total do pacote: <span className="line-through">R$ 408,00</span>
           </p>
           <p className="text-2xl font-bold text-brand-yellow font-sora">
-            Hoje: R$ 27,00
+            Hoje: R$ 37,00
           </p>
         </div>
 

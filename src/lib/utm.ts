@@ -14,7 +14,7 @@ const PREFIX = "lure_";
  * URL única do checkout. Quando o lote mudar, troque APENAS aqui.
  * Nunca coloque a URL do checkout direto nos botões — use appendUtms(CHECKOUT_URL).
  */
-export const CHECKOUT_URL = "https://pay.assiny.com.br/0u6y8S/node/Wb-ScB";
+export const CHECKOUT_URL = "https://pay.assiny.com.br/QliEpy/node/dK9gWT";
 
 /**
  * Lê os UTMs da query string da URL atual e salva no localStorage com o
