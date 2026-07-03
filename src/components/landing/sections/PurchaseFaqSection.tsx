@@ -2,6 +2,7 @@ import { Check, ShieldCheck, Sparkles, Zap, Clock, Flame, CalendarDays } from "l
 import { motion } from "framer-motion";
 import brandLogo from "@/assets/logo-mecanico-que-lucra-nova.png";
 import { CtaButton } from "@/components/landing/ui/CtaButton";
+import { SalesProgressBar } from "@/components/landing/ui/SalesProgressBar";
 import { CHECKOUT_URL, appendUtms } from "@/lib/utm";
 import {
   Accordion,
@@ -31,7 +32,7 @@ const faqs = [
 
 export function PurchaseFaqSection() {
   return (
-    <section id="oferta" className="relative overflow-hidden bg-gradient-to-b from-brand-offwhite via-brand-offwhite to-white py-20 sm:py-28">
+    <section id="oferta" className="relative scroll-mt-2 overflow-hidden bg-gradient-to-b from-brand-offwhite via-brand-offwhite to-white py-10 sm:py-28">
       {/* animated decorative blurs */}
       <motion.div
         className="pointer-events-none absolute left-1/2 top-10 h-96 w-96 -translate-x-1/2 rounded-full bg-brand-yellow/20 blur-[140px]"
@@ -55,7 +56,7 @@ export function PurchaseFaqSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="mx-auto mb-24 max-w-[30rem]"
+          className="mx-auto mb-16 max-w-[30rem] sm:mb-24"
         >
           {/* floating badge above card */}
           <motion.div
@@ -88,7 +89,7 @@ export function PurchaseFaqSection() {
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               style={{ zIndex: 0 }}
             />
-            <div className="relative overflow-hidden border-b-4 border-brand-yellow bg-brand-dark px-7 py-10 text-center sm:px-10">
+            <div className="relative overflow-hidden border-b-4 border-brand-yellow bg-brand-dark px-7 py-5 text-center sm:px-10 sm:py-10">
               <div className="experts-grid pointer-events-none absolute inset-0 opacity-15" />
               <motion.div
                 className="pointer-events-none absolute left-1/2 top-0 h-28 w-64 -translate-x-1/2 bg-brand-yellow/20 blur-[55px]"
@@ -113,21 +114,21 @@ export function PurchaseFaqSection() {
               <img
                 src={brandLogo}
                 alt="Aulão O Mecânico que Lucra"
-                className="relative mx-auto h-auto w-64 drop-shadow-2xl sm:w-72"
+                className="relative mx-auto h-auto w-40 drop-shadow-2xl sm:w-72"
                 loading="lazy"
               />
             </div>
 
-            <div className="relative px-5 py-8 sm:px-8 sm:py-9">
+            <div className="relative px-5 py-6 sm:px-8 sm:py-9">
               <p className="mb-2 flex items-center justify-center gap-2 text-center font-sora text-[11px] font-extrabold uppercase tracking-[0.2em] text-brand-yellow">
                 <Zap className="h-3.5 w-3.5 fill-brand-yellow" /> Comprando agora você leva
               </p>
-              <h2 className="mb-5 text-center font-sora text-2xl font-extrabold leading-tight text-brand-dark sm:text-3xl">
+              <h2 className="mb-4 text-center font-sora text-xl font-extrabold leading-tight text-brand-dark sm:text-3xl">
                 01 ingresso para o Aulão<br />O Mecânico que Lucra
               </h2>
 
               {/* AO VIVO + data e hora — edite a data/horário abaixo */}
-              <div className="mb-7 flex flex-col items-center gap-3">
+              <div className="mb-5 flex flex-col items-center gap-2 sm:gap-3">
                 <motion.span
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -157,34 +158,16 @@ export function PurchaseFaqSection() {
                 </div>
               </div>
 
-              <div className="mb-8 space-y-3">
-                {[
-                  { label: "9 horas de conteúdo ao vivo", price: "R$ 497" },
-                  { label: "Slides e materiais extras", price: "R$ 99" },
-                ].map((item, i) => (
-                  <motion.div
-                    key={item.label}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
-                    whileHover={{ x: 4 }}
-                    className="group flex items-center justify-between gap-3 rounded-xl border border-brand-dark/10 bg-brand-offwhite px-4 py-4 transition-colors duration-300 hover:border-brand-yellow/40"
-                  >
-                    <div className="flex min-w-0 items-center gap-3 text-brand-dark">
-                      <motion.span
-                        whileHover={{ scale: 1.2, rotate: 360 }}
-                        transition={{ duration: 0.4 }}
-                        className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 group-hover:bg-brand-yellow"
-                      >
-                        <Check className="h-4 w-4 text-brand-yellow group-hover:text-brand-dark" strokeWidth={3} />
-                      </motion.span>
-                      <p className="text-sm font-bold sm:text-base">{item.label}</p>
-                    </div>
-                    <span className="shrink-0 text-xs font-semibold text-brand-gray-light line-through">{item.price}</span>
-                  </motion.div>
-                ))}
-              </div>
+              {/* CTA — movido para cima (troca com a lista de itens) */}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="offer-shimmer mb-6 rounded-xl"
+              >
+                <CtaButton onClick={() => { window.location.href = appendUtms(CHECKOUT_URL); }} size="xl" pulse className="w-full rounded-xl shadow-[0_18px_45px_-12px_color-mix(in_oklab,var(--color-brand-yellow)_80%,transparent)]">
+                  GARANTIR MEU INGRESSO
+                </CtaButton>
+              </motion.div>
 
               <div className="text-center">
                 <p className="mb-2 text-sm font-semibold text-brand-gray-light">
@@ -206,21 +189,43 @@ export function PurchaseFaqSection() {
                     transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                   />
                   <span className="font-sora text-3xl font-extrabold">R$</span>
-                  <span className="font-sora text-7xl font-extrabold tracking-[-0.07em] sm:text-8xl">37,00</span>
+                  <span className="font-sora text-6xl font-extrabold tracking-[-0.07em] sm:text-8xl">37,00</span>
                 </motion.div>
-                <p className="mx-auto mb-7 max-w-xs text-sm font-semibold italic leading-relaxed text-brand-gray-light">
+                <p className="mx-auto mb-5 max-w-xs text-sm font-semibold italic leading-snug text-brand-gray-light sm:mb-7 sm:leading-relaxed">
                   O valor de uma marmita por um plano que vai mudar o fim do mês da sua oficina.
                 </p>
 
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="offer-shimmer rounded-xl"
-                >
-                  <CtaButton onClick={() => { window.location.href = appendUtms(CHECKOUT_URL); }} size="xl" pulse className="w-full rounded-xl shadow-[0_18px_45px_-12px_color-mix(in_oklab,var(--color-brand-yellow)_80%,transparent)]">
-                    GARANTIR MEU INGRESSO
-                  </CtaButton>
-                </motion.div>
+                {/* Lista de itens — movida para baixo (troca com o botão) */}
+                <div className="mb-2 space-y-2.5 text-left sm:space-y-3">
+                  {[
+                    { label: "9 horas de conteúdo ao vivo", price: "R$ 497" },
+                    { label: "Slides e materiais extras", price: "R$ 99" },
+                  ].map((item, i) => (
+                    <motion.div
+                      key={item.label}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
+                      whileHover={{ x: 4 }}
+                      className="group flex items-center justify-between gap-3 rounded-xl border border-brand-dark/10 bg-brand-offwhite px-4 py-3 transition-colors duration-300 hover:border-brand-yellow/40 sm:py-4"
+                    >
+                      <div className="flex min-w-0 items-center gap-3 text-brand-dark">
+                        <motion.span
+                          whileHover={{ scale: 1.2, rotate: 360 }}
+                          transition={{ duration: 0.4 }}
+                          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-yellow/15 group-hover:bg-brand-yellow"
+                        >
+                          <Check className="h-4 w-4 text-brand-yellow group-hover:text-brand-dark" strokeWidth={3} />
+                        </motion.span>
+                        <p className="text-sm font-bold sm:text-base">{item.label}</p>
+                      </div>
+                      <span className="shrink-0 text-xs font-semibold text-brand-gray-light line-through">{item.price}</span>
+                    </motion.div>
+                  ))}
+                </div>
+
+                <SalesProgressBar variant="light" className="mt-4" />
 
                 <div className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[11px] font-bold uppercase tracking-wider text-brand-gray-light">
                   <span className="flex items-center gap-1.5">

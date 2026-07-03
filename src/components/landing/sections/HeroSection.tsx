@@ -1,6 +1,6 @@
 import { Check, CalendarDays, Clock } from "lucide-react";
 import { CtaButton } from "@/components/landing/ui/CtaButton";
-import { TicketCounter } from "@/components/landing/ui/AnimatedCounter";
+import { SalesProgressBar } from "@/components/landing/ui/SalesProgressBar";
 import heroBanner from "@/assets/hero-mecanico.jpg";
 import heroBannerMobile from "@/assets/hero-mobile-banner-v5.jpg";
 import brandLogo from "@/assets/logo-mecanico-que-lucra-nova.png";
@@ -24,11 +24,11 @@ export function HeroSection() {
 
       {/* Mobile hero — full-bleed image followed by an integrated conversion panel */}
       <div className="relative z-20 w-full bg-brand-dark md:hidden">
-        <div className="relative h-[25rem] overflow-hidden bg-brand-dark">
+        <div className="relative h-[23rem] overflow-hidden bg-brand-dark">
           <img
             src={heroBannerMobile}
             alt="Rodrigo Saddock e Leonardo Gomes em uma oficina mecânica"
-            className="hero-mobile-banner h-full w-full object-cover object-top"
+            className="hero-mobile-banner h-full w-full object-cover object-[center_top]"
             fetchPriority="high"
           />
           {/* Side + bottom darkening like desktop — keeps image visible but readable */}
@@ -46,36 +46,36 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="relative -mt-6 flex flex-col items-center overflow-hidden bg-brand-dark px-6 pb-8 text-center">
+        <div className="relative -mt-6 flex flex-col items-center overflow-hidden bg-brand-dark px-6 pb-8 pt-5 text-center">
           {/* Orange ambient glow behind the lower content */}
           <div className="pointer-events-none absolute -bottom-32 left-1/2 h-[32rem] w-[32rem] -translate-x-1/2 bg-[radial-gradient(circle_at_center,color-mix(in_oklab,var(--color-brand-yellow)_28%,transparent),transparent_65%)]" />
 
 
           <div className="relative z-10 w-full">
-            <div className="hero-reveal hero-reveal-1 mb-4">
-              <TicketCounter sold={847} total={1000} />
-            </div>
-            <h1 className="hero-reveal hero-reveal-2 mb-3 font-sora text-[1.5rem] font-extrabold leading-[1.08] tracking-[-0.035em] text-brand-white">
+            <h1 className="hero-reveal hero-reveal-2 mb-2.5 font-sora text-[1.4rem] font-extrabold leading-[1.08] tracking-[-0.035em] text-brand-white">
               Em 3 dias vamos construir um{" "}
               <span className="text-brand-yellow">plano de ação a prova de erros</span>{" "}
               para o lucro sobrar na sua oficina.
             </h1>
-            <p className="hero-reveal hero-reveal-3 mb-4 max-w-sm text-sm leading-relaxed text-text-secondary">
+            <p className="hero-reveal hero-reveal-3 mb-4 max-w-sm text-sm leading-snug text-text-secondary">
               Um passo a passo prático que já ajudou mais de{" "}
               <strong className="font-bold text-brand-white underline decoration-brand-yellow decoration-2 underline-offset-4">
                 750 oficinas
               </strong>{" "}
               a saírem do vermelho.
             </p>
-            <div className="hero-reveal hero-reveal-4 mb-5 flex flex-wrap justify-center gap-2 text-[0.6rem] font-bold uppercase tracking-[0.12em] text-text-secondary">
-              {["Materiais", "Planilhas", "IA treinada"].map((item) => (
-                <span key={item} className="flex items-center gap-2 rounded-md border border-brand-gray bg-brand-dark-secondary px-3 py-1.5">
-                  <Check className="h-3 w-3 stroke-[3] text-brand-yellow drop-shadow-[0_0_6px_color-mix(in_oklab,var(--color-brand-yellow)_70%,transparent)]" />
-                  {item}
-                </span>
-              ))}
+            <div className="hero-reveal hero-reveal-4 flex justify-center">
+              <CtaButton
+                href="#oferta"
+                size="lg"
+                pulse={false}
+                className="rounded-xl bg-brand-yellow text-brand-dark shadow-[0_14px_38px_color-mix(in_oklab,var(--color-brand-yellow)_32%,transparent)] hover:bg-brand-yellow-light hover:shadow-[0_18px_46px_color-mix(in_oklab,var(--color-brand-yellow)_45%,transparent)]"
+              >
+                GARANTIR MEU INGRESSO
+              </CtaButton>
             </div>
-            <div className="hero-reveal hero-reveal-5 mb-5 flex flex-col items-center gap-2 text-sm font-bold text-brand-white">
+            <SalesProgressBar className="hero-reveal hero-reveal-4 mt-3" />
+            <div className="hero-reveal hero-reveal-5 mt-4 flex flex-col items-center gap-2 text-sm font-bold text-brand-white">
               <span className="flex items-center gap-2 rounded-full border border-[#E63946]/40 bg-[#E63946]/15 px-3 py-1 font-sora text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#ff6b75]">
                 <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-[#E63946]" />
                 Ao vivo
@@ -91,15 +91,13 @@ export function HeroSection() {
                 </span>
               </div>
             </div>
-            <div className="hero-reveal hero-reveal-5">
-              <CtaButton
-                href="#oferta"
-                size="xl"
-                pulse={false}
-                className="min-h-[3rem] rounded-xl bg-brand-yellow text-brand-dark shadow-[0_14px_38px_color-mix(in_oklab,var(--color-brand-yellow)_32%,transparent)] hover:bg-brand-yellow-light hover:shadow-[0_18px_46px_color-mix(in_oklab,var(--color-brand-yellow)_45%,transparent)]"
-              >
-                GARANTIR MEU INGRESSO
-              </CtaButton>
+            <div className="hero-reveal hero-reveal-6 mt-4 flex flex-wrap justify-center gap-2 text-[0.6rem] font-bold uppercase tracking-[0.12em] text-text-secondary">
+              {["Materiais", "Planilhas", "IA treinada"].map((item) => (
+                <span key={item} className="flex items-center gap-2 rounded-md border border-brand-gray bg-brand-dark-secondary px-3 py-1.5">
+                  <Check className="h-3 w-3 stroke-[3] text-brand-yellow drop-shadow-[0_0_6px_color-mix(in_oklab,var(--color-brand-yellow)_70%,transparent)]" />
+                  {item}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -114,11 +112,6 @@ export function HeroSection() {
             alt="Aulão O Mecânico que Lucra"
             className="hero-reveal hero-reveal-1 mb-4 h-auto w-28 sm:mb-5 sm:w-40 md:mb-7 md:w-40 lg:mb-9 lg:w-48"
           />
-
-          {/* Counter — desktop: last */}
-          <div className="hero-reveal hero-reveal-2 mb-5 w-full max-w-md sm:mb-6 md:order-7 md:mb-0 md:max-w-lg">
-            <TicketCounter sold={847} total={1000} />
-          </div>
 
           {/* Headline */}
           <h1 className="hero-reveal hero-reveal-3 mb-4 max-w-2xl font-sora text-[1.5rem] font-extrabold leading-[1.08] tracking-[-0.025em] text-brand-white sm:mb-5 sm:text-3xl md:order-2 md:mb-4 lg:text-[2.55rem]">
@@ -175,6 +168,8 @@ export function HeroSection() {
               GARANTIR MEU INGRESSO
             </CtaButton>
           </div>
+
+          <SalesProgressBar className="hero-reveal hero-reveal-6 mb-2 md:order-6 md:mx-0" />
         </div>
       </div>
     </section>
