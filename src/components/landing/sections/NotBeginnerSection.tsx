@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { CtaButton } from "@/components/landing/ui/CtaButton";
+import { SalesProgressBar } from "@/components/landing/ui/SalesProgressBar";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -224,6 +225,8 @@ export function NotBeginnerSection() {
             Garantir meu ingresso
           </CtaButton>
         </motion.div>
+
+        <SalesProgressBar variant="light" className="mt-6" />
       </motion.div>
     </section>
   );

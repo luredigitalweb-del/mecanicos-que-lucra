@@ -1,5 +1,6 @@
 import { Check, FileText, Gift, Sparkles } from "lucide-react";
 import { CtaButton } from "@/components/landing/ui/CtaButton";
+import { SalesProgressBar } from "@/components/landing/ui/SalesProgressBar";
 
 export function BonusSection() {
   return (
@@ -68,6 +69,8 @@ export function BonusSection() {
               <CtaButton href="#oferta" size="xl" pulse arrow className="w-full sm:w-auto">
                 GARANTIR MEU INGRESSO
               </CtaButton>
+
+              <SalesProgressBar variant="dark" className="mt-5 md:mx-0" />
             </div>
           </div>
         </div>

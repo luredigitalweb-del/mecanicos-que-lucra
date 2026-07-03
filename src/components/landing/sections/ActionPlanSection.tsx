@@ -1,4 +1,5 @@
 import { CtaButton } from "@/components/landing/ui/CtaButton";
+import { SalesProgressBar } from "@/components/landing/ui/SalesProgressBar";
 import brandLogo from "@/assets/logo-mecanico-que-lucra.png";
 
 export function ActionPlanSection() {
@@ -71,6 +72,8 @@ export function ActionPlanSection() {
                 GARANTIR MEU INGRESSO
               </CtaButton>
             </div>
+
+            <SalesProgressBar variant="light" className="mt-5" />
           </div>
         </div>
       </div>
