@@ -4,6 +4,7 @@ import { SalesProgressBar } from "@/components/landing/ui/SalesProgressBar";
 import heroBanner from "@/assets/hero-mecanico.jpg";
 import heroBannerMobile from "@/assets/hero-mobile-banner-v5.jpg";
 import brandLogo from "@/assets/logo-mecanico-que-lucra-nova.png";
+import brandLogoDark from "@/assets/logo-mecanico-que-lucra.png";
 
 interface HeroSectionProps {
   /** true = herói com fundo branco e texto escuro (usado só na /02). */
@@ -18,9 +19,12 @@ export function HeroSection({ light = false }: HeroSectionProps) {
   const strongText = light ? "text-brand-dark" : "text-brand-white";
 
   // Overlay do desktop: some a imagem para branco (light) ou preto (dark) do lado esquerdo, onde fica o texto.
-  const desktopOverlay = light
-    ? "bg-[linear-gradient(90deg,#ffffff_0%,color-mix(in_oklab,#ffffff_96%,transparent)_34%,color-mix(in_oklab,#ffffff_42%,transparent)_58%,transparent_78%)]"
-    : "bg-[linear-gradient(90deg,var(--color-brand-dark)_0%,color-mix(in_oklab,var(--color-brand-dark)_96%,transparent)_34%,color-mix(in_oklab,var(--color-brand-dark)_42%,transparent)_58%,transparent_78%)]";
+  const desktopOverlay =
+    "bg-[linear-gradient(90deg,var(--color-brand-dark)_0%,color-mix(in_oklab,var(--color-brand-dark)_96%,transparent)_34%,color-mix(in_oklab,var(--color-brand-dark)_42%,transparent)_58%,transparent_78%)]";
+
+  // Light: branco solido ate ~37% e dissolve totalmente ate 50% — os dois comecam depois disso.
+  const lightOverlay =
+    "bg-[linear-gradient(90deg,#ffffff_0%,#ffffff_37%,rgba(255,255,255,0.92)_41%,rgba(255,255,255,0.55)_45%,rgba(255,255,255,0.18)_48%,transparent_52%)]";
 
   // Fades da imagem mobile — dissolvem a foto no painel (branco no light, escuro no dark).
   const mobileFadeBottom = light
@@ -55,9 +59,11 @@ export function HeroSection({ light = false }: HeroSectionProps) {
         />
       </picture>
 
-      {/* Gradient overlay — desktop only */}
-      <div className={`absolute inset-0 z-10 hidden md:block ${desktopOverlay}`} />
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-1/2 bg-[radial-gradient(circle_at_30%_50%,color-mix(in_oklab,var(--color-brand-yellow)_10%,transparent),transparent_62%)] md:block" />
+      {/* Overlay — no light o branco termina antes dos dois, para nao lava-los */}
+      <div className={`absolute inset-0 z-10 hidden md:block ${light ? lightOverlay : desktopOverlay}`} />
+      {!light && (
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-1/2 bg-[radial-gradient(circle_at_30%_50%,color-mix(in_oklab,var(--color-brand-yellow)_10%,transparent),transparent_62%)] md:block" />
+      )}
 
       {/* Mobile hero — full-bleed image followed by an integrated conversion panel */}
       <div className={`relative z-20 w-full md:hidden ${panelBg}`}>
@@ -142,12 +148,12 @@ export function HeroSection({ light = false }: HeroSectionProps) {
 
       {/* Desktop content (image already fills the section as a background) */}
       <div className="relative z-20 mx-auto hidden w-full max-w-[1440px] flex-col items-center px-5 pb-6 pt-6 text-center sm:px-8 sm:pt-7 md:flex md:min-h-screen md:flex-row md:items-center md:py-12 md:text-left lg:px-12">
-        <div className="flex w-full flex-col items-center md:w-[52%] md:max-w-[650px] md:items-start">
+        <div className={`flex w-full flex-col items-center md:items-start ${light ? "md:w-[46%] md:max-w-[560px]" : "md:w-[52%] md:max-w-[650px]"}`}>
           {/* Logo */}
           <img
-            src={brandLogo}
+            src={light ? brandLogoDark : brandLogo}
             alt="Aulão O Mecânico que Lucra"
-            className={`hero-reveal hero-reveal-1 mb-4 h-auto w-28 sm:mb-5 sm:w-40 md:mb-7 md:w-40 lg:mb-9 lg:w-48 ${light ? "invert" : ""}`}
+            className="hero-reveal hero-reveal-1 mb-4 h-auto w-28 sm:mb-5 sm:w-40 md:mb-7 md:w-40 lg:mb-9 lg:w-48"
           />
 
           {/* Headline */}
