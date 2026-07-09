@@ -19,7 +19,7 @@ export const Route = createFileRoute("/02")({
 function Page02() {
   return (
     <main className="min-h-screen bg-brand-dark">
-      <HeroSection />
+      <HeroSection light />
       <ScheduleSection />
       <BuildSection />
       <ResultsTestimonialsSection />

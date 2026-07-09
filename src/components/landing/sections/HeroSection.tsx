@@ -5,9 +5,46 @@ import heroBanner from "@/assets/hero-mecanico.jpg";
 import heroBannerMobile from "@/assets/hero-mobile-banner-v5.jpg";
 import brandLogo from "@/assets/logo-mecanico-que-lucra-nova.png";
 
-export function HeroSection() {
+interface HeroSectionProps {
+  /** true = herói com fundo branco e texto escuro (usado só na /02). */
+  light?: boolean;
+}
+
+export function HeroSection({ light = false }: HeroSectionProps) {
+  const sectionBg = light ? "bg-white" : "bg-brand-blackout md:bg-brand-dark";
+  const panelBg = light ? "bg-white" : "bg-brand-dark";
+  const headingText = light ? "text-brand-dark" : "text-brand-white";
+  const subText = light ? "text-brand-gray-light" : "text-text-secondary";
+  const strongText = light ? "text-brand-dark" : "text-brand-white";
+
+  // Overlay do desktop: some a imagem para branco (light) ou preto (dark) do lado esquerdo, onde fica o texto.
+  const desktopOverlay = light
+    ? "bg-[linear-gradient(90deg,#ffffff_0%,color-mix(in_oklab,#ffffff_96%,transparent)_34%,color-mix(in_oklab,#ffffff_42%,transparent)_58%,transparent_78%)]"
+    : "bg-[linear-gradient(90deg,var(--color-brand-dark)_0%,color-mix(in_oklab,var(--color-brand-dark)_96%,transparent)_34%,color-mix(in_oklab,var(--color-brand-dark)_42%,transparent)_58%,transparent_78%)]";
+
+  // Fades da imagem mobile — dissolvem a foto no painel (branco no light, escuro no dark).
+  const mobileFadeBottom = light
+    ? "bg-[linear-gradient(180deg,transparent_72%,rgba(0,0,0,0.3)_100%)]"
+    : "bg-[linear-gradient(180deg,transparent_0%,color-mix(in_oklab,var(--color-brand-dark)_55%,transparent)_62%,var(--color-brand-dark)_100%)]";
+  const mobileFadeLeft = light
+    ? ""
+    : "bg-[linear-gradient(90deg,var(--color-brand-dark)_0%,transparent_80%)]";
+  const mobileFadeRight = light
+    ? ""
+    : "bg-[linear-gradient(270deg,var(--color-brand-dark)_0%,transparent_80%)]";
+
+  // Emenda foto -> painel: no light o painel branco sobe com topo arredondado sobre a foto.
+  const panelShape = light
+    ? "-mt-10 rounded-t-[2rem] pt-8 shadow-[0_-16px_40px_-14px_rgba(0,0,0,0.35)]"
+    : "-mt-6 pt-5";
+  const logoPos = light ? "bottom-14" : "bottom-6";
+
+  const chipClass = light
+    ? "flex items-center gap-2 rounded-md border border-brand-dark/10 bg-brand-offwhite px-3 py-1.5"
+    : "flex items-center gap-2 rounded-md border border-brand-gray bg-brand-dark-secondary px-3 py-1.5";
+
   return (
-    <section className="relative overflow-hidden bg-brand-blackout md:bg-brand-dark">
+    <section className={`relative overflow-hidden ${sectionBg}`}>
       {/* Background image — desktop only */}
       <picture className="absolute inset-0 z-0 hidden md:block">
         <img
@@ -19,12 +56,12 @@ export function HeroSection() {
       </picture>
 
       {/* Gradient overlay — desktop only */}
-      <div className="absolute inset-0 z-10 hidden bg-[linear-gradient(90deg,var(--color-brand-dark)_0%,color-mix(in_oklab,var(--color-brand-dark)_96%,transparent)_34%,color-mix(in_oklab,var(--color-brand-dark)_42%,transparent)_58%,transparent_78%)] md:block" />
+      <div className={`absolute inset-0 z-10 hidden md:block ${desktopOverlay}`} />
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-1/2 bg-[radial-gradient(circle_at_30%_50%,color-mix(in_oklab,var(--color-brand-yellow)_10%,transparent),transparent_62%)] md:block" />
 
       {/* Mobile hero — full-bleed image followed by an integrated conversion panel */}
-      <div className="relative z-20 w-full bg-brand-dark md:hidden">
-        <div className="relative h-[23rem] overflow-hidden bg-brand-dark">
+      <div className={`relative z-20 w-full md:hidden ${panelBg}`}>
+        <div className={`relative h-[23rem] overflow-hidden ${panelBg}`}>
           <img
             src={heroBannerMobile}
             alt="Rodrigo Saddock e Leonardo Gomes em uma oficina mecânica"
@@ -32,11 +69,11 @@ export function HeroSection() {
             fetchPriority="high"
           />
           {/* Side + bottom darkening like desktop — keeps image visible but readable */}
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,color-mix(in_oklab,var(--color-brand-dark)_55%,transparent)_62%,var(--color-brand-dark)_100%)]" />
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/2 bg-[linear-gradient(90deg,var(--color-brand-dark)_0%,transparent_80%)]" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-[linear-gradient(270deg,var(--color-brand-dark)_0%,transparent_80%)]" />
+          <div className={`pointer-events-none absolute inset-0 ${mobileFadeBottom}`} />
+          <div className={`pointer-events-none absolute inset-y-0 left-0 w-1/2 ${mobileFadeLeft}`} />
+          <div className={`pointer-events-none absolute inset-y-0 right-0 w-1/3 ${mobileFadeRight}`} />
           {/* Centered logo above the conversion panel */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-6 flex justify-center">
+          <div className={`pointer-events-none absolute inset-x-0 flex justify-center ${logoPos}`}>
             <img
               src={brandLogo}
               alt=""
@@ -46,20 +83,20 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="relative -mt-6 flex flex-col items-center overflow-hidden bg-brand-dark px-6 pb-8 pt-5 text-center">
+        <div className={`relative z-10 flex flex-col items-center overflow-hidden px-6 pb-8 text-center ${panelShape} ${panelBg}`}>
           {/* Orange ambient glow behind the lower content */}
           <div className="pointer-events-none absolute -bottom-32 left-1/2 h-[32rem] w-[32rem] -translate-x-1/2 bg-[radial-gradient(circle_at_center,color-mix(in_oklab,var(--color-brand-yellow)_28%,transparent),transparent_65%)]" />
 
 
           <div className="relative z-10 w-full">
-            <h1 className="hero-reveal hero-reveal-2 mb-2.5 font-sora text-[1.4rem] font-extrabold leading-[1.08] tracking-[-0.035em] text-brand-white">
+            <h1 className={`hero-reveal hero-reveal-2 mb-2.5 font-sora text-[1.4rem] font-extrabold leading-[1.08] tracking-[-0.035em] ${headingText}`}>
               Em 3 dias vamos construir um{" "}
               <span className="text-brand-yellow">plano de ação a prova de erros</span>{" "}
               para o lucro sobrar na sua oficina.
             </h1>
-            <p className="hero-reveal hero-reveal-3 mb-4 max-w-sm text-sm leading-snug text-text-secondary">
+            <p className={`hero-reveal hero-reveal-3 mb-4 max-w-sm text-sm leading-snug ${subText}`}>
               Um passo a passo prático que já ajudou mais de{" "}
-              <strong className="font-bold text-brand-white underline decoration-brand-yellow decoration-2 underline-offset-4">
+              <strong className={`font-bold underline decoration-brand-yellow decoration-2 underline-offset-4 ${strongText}`}>
                 750 oficinas
               </strong>{" "}
               a saírem do vermelho.
@@ -74,8 +111,8 @@ export function HeroSection() {
                 GARANTIR MEU INGRESSO
               </CtaButton>
             </div>
-            <SalesProgressBar className="hero-reveal hero-reveal-4 mt-3" />
-            <div className="hero-reveal hero-reveal-5 mt-4 flex flex-col items-center gap-2 text-sm font-bold text-brand-white">
+            <SalesProgressBar variant={light ? "light" : "dark"} className="hero-reveal hero-reveal-4 mt-3" />
+            <div className={`hero-reveal hero-reveal-5 mt-4 flex flex-col items-center gap-2 text-sm font-bold ${headingText}`}>
               <span className="flex items-center gap-2 rounded-full border border-[#E63946]/40 bg-[#E63946]/15 px-3 py-1 font-sora text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#ff6b75]">
                 <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-[#E63946]" />
                 Ao vivo
@@ -91,9 +128,9 @@ export function HeroSection() {
                 </span>
               </div>
             </div>
-            <div className="hero-reveal hero-reveal-6 mt-4 flex flex-wrap justify-center gap-2 text-[0.6rem] font-bold uppercase tracking-[0.12em] text-text-secondary">
+            <div className={`hero-reveal hero-reveal-6 mt-4 flex flex-wrap justify-center gap-2 text-[0.6rem] font-bold uppercase tracking-[0.12em] ${subText}`}>
               {["Materiais", "Planilhas", "IA treinada"].map((item) => (
-                <span key={item} className="flex items-center gap-2 rounded-md border border-brand-gray bg-brand-dark-secondary px-3 py-1.5">
+                <span key={item} className={chipClass}>
                   <Check className="h-3 w-3 stroke-[3] text-brand-yellow drop-shadow-[0_0_6px_color-mix(in_oklab,var(--color-brand-yellow)_70%,transparent)]" />
                   {item}
                 </span>
@@ -110,27 +147,27 @@ export function HeroSection() {
           <img
             src={brandLogo}
             alt="Aulão O Mecânico que Lucra"
-            className="hero-reveal hero-reveal-1 mb-4 h-auto w-28 sm:mb-5 sm:w-40 md:mb-7 md:w-40 lg:mb-9 lg:w-48"
+            className={`hero-reveal hero-reveal-1 mb-4 h-auto w-28 sm:mb-5 sm:w-40 md:mb-7 md:w-40 lg:mb-9 lg:w-48 ${light ? "invert" : ""}`}
           />
 
           {/* Headline */}
-          <h1 className="hero-reveal hero-reveal-3 mb-4 max-w-2xl font-sora text-[1.5rem] font-extrabold leading-[1.08] tracking-[-0.025em] text-brand-white sm:mb-5 sm:text-3xl md:order-2 md:mb-4 lg:text-[2.55rem]">
+          <h1 className={`hero-reveal hero-reveal-3 mb-4 max-w-2xl font-sora text-[1.5rem] font-extrabold leading-[1.08] tracking-[-0.025em] sm:mb-5 sm:text-3xl md:order-2 md:mb-4 lg:text-[2.55rem] ${headingText}`}>
             Em 3 dias vamos construir um{" "}
             <span className="text-brand-yellow">plano de ação a prova de erros</span>{" "}
             para o lucro sobrar na sua oficina.
           </h1>
 
           {/* Subheadline */}
-          <p className="hero-reveal hero-reveal-4 mb-5 max-w-lg text-sm leading-relaxed text-text-secondary sm:mb-6 sm:text-lg md:order-3">
+          <p className={`hero-reveal hero-reveal-4 mb-5 max-w-lg text-sm leading-relaxed sm:mb-6 sm:text-lg md:order-3 ${subText}`}>
             Um passo a passo prático que já ajudou mais de{" "}
-            <strong className="font-bold text-brand-white underline decoration-brand-yellow decoration-2 underline-offset-4">
+            <strong className={`font-bold underline decoration-brand-yellow decoration-2 underline-offset-4 ${strongText}`}>
               750 oficinas
             </strong>{" "}
             a saírem do vermelho.
           </p>
 
           {/* Chips */}
-          <div className="hero-reveal hero-reveal-5 mb-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-[0.65rem] font-bold uppercase tracking-[0.12em] text-text-secondary sm:mb-7 sm:text-xs md:order-4 md:mb-8 md:justify-start">
+          <div className={`hero-reveal hero-reveal-5 mb-6 flex flex-wrap justify-center gap-x-4 gap-y-2 text-[0.65rem] font-bold uppercase tracking-[0.12em] sm:mb-7 sm:text-xs md:order-4 md:mb-8 md:justify-start ${subText}`}>
             {["Materiais", "Planilhas", "IA treinada"].map((item) => (
               <span key={item} className="flex items-center gap-2">
                 <span className="h-1 w-1 rounded-full bg-brand-yellow" />
@@ -140,7 +177,7 @@ export function HeroSection() {
           </div>
 
           {/* Data e hora */}
-          <div className="hero-reveal hero-reveal-6 mb-6 flex flex-col items-center gap-2 text-sm font-bold text-brand-white sm:text-base md:order-[4.5] md:mb-7 md:items-start">
+          <div className={`hero-reveal hero-reveal-6 mb-6 flex flex-col items-center gap-2 text-sm font-bold sm:text-base md:order-[4.5] md:mb-7 md:items-start ${headingText}`}>
             <span className="flex items-center gap-2 rounded-full border border-[#E63946]/40 bg-[#E63946]/15 px-3 py-1 font-sora text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#ff6b75]">
               <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-[#E63946]" />
               Ao vivo
@@ -169,7 +206,7 @@ export function HeroSection() {
             </CtaButton>
           </div>
 
-          <SalesProgressBar className="hero-reveal hero-reveal-6 mb-2 md:order-6 md:mx-0" />
+          <SalesProgressBar variant={light ? "light" : "dark"} className="hero-reveal hero-reveal-6 mb-2 md:order-6 md:mx-0" />
         </div>
       </div>
     </section>
