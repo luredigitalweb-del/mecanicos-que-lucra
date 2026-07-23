@@ -15,14 +15,14 @@ interface SalesProgressBarProps {
 
 /**
  * Barra fina de escassez exibida abaixo dos CTAs:
- * "85% dos ingressos vendidos de R$ 79,00 por R$ 37,00".
+ * "85% dos ingressos vendidos de R$ 79,00 por R$ 47,00".
  * A barra preenche e o número conta de 0 até o valor ao entrar na tela.
  * Ajuste os valores padrão aqui quando o lote/percentual mudar.
  */
 export function SalesProgressBar({
   percent = 85,
   oldPrice = "R$ 79,00",
-  price = "R$ 37,00",
+  price = "R$ 47,00",
   variant = "dark",
   className = "",
 }: SalesProgressBarProps) {

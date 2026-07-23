@@ -189,7 +189,7 @@ export function PurchaseFaqSection() {
                     transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                   />
                   <span className="font-sora text-3xl font-extrabold">R$</span>
-                  <span className="font-sora text-6xl font-extrabold tracking-[-0.07em] sm:text-8xl">37,00</span>
+                  <span className="font-sora text-6xl font-extrabold tracking-[-0.07em] sm:text-8xl">47,00</span>
                 </motion.div>
                 <p className="mx-auto mb-5 max-w-xs text-sm font-semibold italic leading-snug text-brand-gray-light sm:mb-7 sm:leading-relaxed">
                   O valor de uma marmita por um plano que vai mudar o fim do mês da sua oficina.

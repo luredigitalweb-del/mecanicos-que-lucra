@@ -28,7 +28,7 @@ export function StickyCta() {
               Aulão O Mecânico que Lucra
             </p>
             <p className="text-brand-yellow text-xs font-bold">
-              Apenas R$ 37,00 • Vagas limitadas
+              Apenas R$ 47,00 • Vagas limitadas
             </p>
           </div>
           <CtaButton onClick={() => { window.location.href = appendUtms(CHECKOUT_URL); }} size="default" className="w-full sm:w-auto">
