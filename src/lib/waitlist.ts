@@ -26,9 +26,26 @@ export interface WaitlistLead {
 
 const isSheetConfigured = () => Boolean(APPS_SCRIPT_URL);
 
-function whatsappUrl({ nome, telefone }: WaitlistLead): string {
-  const text = `Olá! Acabei de entrar na lista de espera do Aulão O Mecânico que Lucra.\n\nNome: ${nome}\nTelefone: ${telefone}`;
+const WAITLIST_THANKS_ROUTE = "/lista-confirmada";
+const WAITLIST_STORAGE_KEY = "mecanico_waitlist_lead";
+
+/** Link do WhatsApp confirmando que a pessoa está na lista de espera. */
+export function buildWhatsappUrl(lead?: WaitlistLead | null): string {
+  const base = "Olá! Confirmo que entrei na lista de espera do Aulão O Mecânico que Lucra.";
+  const text = lead
+    ? `${base}\n\nNome: ${lead.nome}\nTelefone: ${lead.telefone}`
+    : base;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+}
+
+/** Lê o último cadastro salvo (usado na página de confirmação). */
+export function getStoredLead(): WaitlistLead | null {
+  try {
+    const raw = sessionStorage.getItem(WAITLIST_STORAGE_KEY);
+    return raw ? (JSON.parse(raw) as WaitlistLead) : null;
+  } catch {
+    return null;
+  }
 }
 
 export async function submitWaitlist(lead: WaitlistLead): Promise<void> {
@@ -36,7 +53,7 @@ export async function submitWaitlist(lead: WaitlistLead): Promise<void> {
   if (isSheetConfigured()) {
     try {
       // no-cors: o Apps Script grava a linha na planilha; não lemos a resposta.
-      // O await garante que o POST foi enviado antes de encaminhar ao WhatsApp.
+      // O await garante que o POST foi enviado antes de navegar de página.
       await fetch(APPS_SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
@@ -44,12 +61,17 @@ export async function submitWaitlist(lead: WaitlistLead): Promise<void> {
         body: JSON.stringify({ nome: lead.nome, telefone: lead.telefone }),
       });
     } catch {
-      /* falha ao gravar não deve impedir o encaminhamento ao WhatsApp */
+      /* falha ao gravar não deve impedir a confirmação */
     }
   }
 
-  // 2. Encaminha o visitante para o WhatsApp com os dados preenchidos.
-  window.location.href = whatsappUrl(lead);
+  // 2. Guarda o lead e leva para a página de confirmação (que encaminha ao WhatsApp).
+  try {
+    sessionStorage.setItem(WAITLIST_STORAGE_KEY, JSON.stringify(lead));
+  } catch {
+    /* sessionStorage indisponível — segue sem os dados na página */
+  }
+  window.location.href = WAITLIST_THANKS_ROUTE;
 }
 
 /** true quando os cadastros já caem numa planilha (Apps Script configurado). */

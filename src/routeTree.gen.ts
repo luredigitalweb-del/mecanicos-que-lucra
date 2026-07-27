@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ObrigadoRouteImport } from './routes/obrigado'
+import { Route as ListaConfirmadaRouteImport } from './routes/lista-confirmada'
 import { Route as R02RouteImport } from './routes/02'
 import { Route as R01RouteImport } from './routes/01'
 import { Route as IndexRouteImport } from './routes/index'
@@ -17,6 +18,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const ObrigadoRoute = ObrigadoRouteImport.update({
   id: '/obrigado',
   path: '/obrigado',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ListaConfirmadaRoute = ListaConfirmadaRouteImport.update({
+  id: '/lista-confirmada',
+  path: '/lista-confirmada',
   getParentRoute: () => rootRouteImport,
 } as any)
 const R02Route = R02RouteImport.update({
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/01': typeof R01Route
   '/02': typeof R02Route
+  '/lista-confirmada': typeof ListaConfirmadaRoute
   '/obrigado': typeof ObrigadoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/01': typeof R01Route
   '/02': typeof R02Route
+  '/lista-confirmada': typeof ListaConfirmadaRoute
   '/obrigado': typeof ObrigadoRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,22 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/01': typeof R01Route
   '/02': typeof R02Route
+  '/lista-confirmada': typeof ListaConfirmadaRoute
   '/obrigado': typeof ObrigadoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/01' | '/02' | '/obrigado'
+  fullPaths: '/' | '/01' | '/02' | '/lista-confirmada' | '/obrigado'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/01' | '/02' | '/obrigado'
-  id: '__root__' | '/' | '/01' | '/02' | '/obrigado'
+  to: '/' | '/01' | '/02' | '/lista-confirmada' | '/obrigado'
+  id: '__root__' | '/' | '/01' | '/02' | '/lista-confirmada' | '/obrigado'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R01Route: typeof R01Route
   R02Route: typeof R02Route
+  ListaConfirmadaRoute: typeof ListaConfirmadaRoute
   ObrigadoRoute: typeof ObrigadoRoute
 }
 
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/obrigado'
       fullPath: '/obrigado'
       preLoaderRoute: typeof ObrigadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lista-confirmada': {
+      id: '/lista-confirmada'
+      path: '/lista-confirmada'
+      fullPath: '/lista-confirmada'
+      preLoaderRoute: typeof ListaConfirmadaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/02': {
@@ -106,6 +123,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R01Route: R01Route,
   R02Route: R02Route,
+  ListaConfirmadaRoute: ListaConfirmadaRoute,
   ObrigadoRoute: ObrigadoRoute,
 }
 export const routeTree = rootRouteImport
