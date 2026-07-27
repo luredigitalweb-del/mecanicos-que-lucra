@@ -46,7 +46,7 @@ export function UrgencySection() {
             <p className="text-gray-400 text-sm mb-6">ou 1x no cartão • Acesso vitalício</p>
 
             <CtaButton href="#checkout" size="xl" pulse className="mb-4">
-              QUERO GARANTIR MINHA VAGA
+              ENTRAR NA LISTA DE ESPERA
             </CtaButton>
 
             <p className="text-gray-500 text-xs">

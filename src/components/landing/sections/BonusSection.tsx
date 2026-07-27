@@ -67,7 +67,7 @@ export function BonusSection() {
               </div>
 
               <CtaButton href="#oferta" size="xl" pulse arrow className="w-full sm:w-auto">
-                GARANTIR MEU INGRESSO
+                ENTRAR NA LISTA DE ESPERA
               </CtaButton>
 
               <SalesProgressBar variant="dark" className="mt-5 md:mx-0" />

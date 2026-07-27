@@ -114,7 +114,7 @@ export function HeroSection({ light = false }: HeroSectionProps) {
                 pulse={false}
                 className="rounded-xl bg-brand-yellow text-brand-dark shadow-[0_14px_38px_color-mix(in_oklab,var(--color-brand-yellow)_32%,transparent)] hover:bg-brand-yellow-light hover:shadow-[0_18px_46px_color-mix(in_oklab,var(--color-brand-yellow)_45%,transparent)]"
               >
-                GARANTIR MEU INGRESSO
+                ENTRAR NA LISTA DE ESPERA
               </CtaButton>
             </div>
             <SalesProgressBar variant={light ? "light" : "dark"} className="hero-reveal hero-reveal-4 mt-3" />
@@ -208,7 +208,7 @@ export function HeroSection({ light = false }: HeroSectionProps) {
               pulse
               className="rounded-xl shadow-[0_14px_38px_color-mix(in_oklab,var(--color-brand-yellow)_28%,transparent)]"
             >
-              GARANTIR MEU INGRESSO
+              ENTRAR NA LISTA DE ESPERA
             </CtaButton>
           </div>
 

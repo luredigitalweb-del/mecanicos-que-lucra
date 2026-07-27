@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { type ReactNode } from "react";
+import { useWaitlist } from "@/components/landing/ui/WaitlistModal";
 
 interface CtaButtonProps {
   children: ReactNode;
@@ -15,13 +16,19 @@ interface CtaButtonProps {
 export function CtaButton({
   children,
   href,
-  onClick,
   variant = "primary",
   size = "lg",
   className,
   pulse = true,
   arrow = true,
 }: CtaButtonProps) {
+  const { open: openWaitlist } = useWaitlist();
+
+  // Todos os CTAs de venda agora abrem a lista de espera.
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    openWaitlist();
+  };
   const baseStyles = "group relative isolate inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-lg font-bold font-sora transition-all duration-300 tracking-wide uppercase text-center";
 
   const variants = {
@@ -59,14 +66,14 @@ export function CtaButton({
 
   if (href) {
     return (
-      <a href={href} className={classes} onClick={onClick}>
+      <a href={href} className={classes} onClick={handleClick}>
         {content}
       </a>
     );
   }
 
   return (
-    <button className={classes} onClick={onClick}>
+    <button className={classes} onClick={handleClick}>
       {content}
     </button>
   );

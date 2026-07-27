@@ -69,7 +69,7 @@ export function ActionPlanSection() {
             {/* CTA */}
             <div className="flex justify-center">
               <CtaButton href="#oferta" size="xl" pulse arrow>
-                GARANTIR MEU INGRESSO
+                ENTRAR NA LISTA DE ESPERA
               </CtaButton>
             </div>
 

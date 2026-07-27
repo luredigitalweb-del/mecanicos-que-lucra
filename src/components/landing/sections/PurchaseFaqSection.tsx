@@ -165,7 +165,7 @@ export function PurchaseFaqSection() {
                 className="offer-shimmer mb-6 rounded-xl"
               >
                 <CtaButton onClick={() => { window.location.href = appendUtms(CHECKOUT_URL); }} size="xl" pulse className="w-full rounded-xl shadow-[0_18px_45px_-12px_color-mix(in_oklab,var(--color-brand-yellow)_80%,transparent)]">
-                  GARANTIR MEU INGRESSO
+                  ENTRAR NA LISTA DE ESPERA
                 </CtaButton>
               </motion.div>
 
@@ -268,7 +268,7 @@ export function PurchaseFaqSection() {
 
           <div className="mt-9 flex justify-center sm:mt-10">
             <CtaButton onClick={() => { window.location.href = appendUtms(CHECKOUT_URL); }} size="xl" pulse className="sm:w-auto">
-              GARANTIR MEU INGRESSO
+              ENTRAR NA LISTA DE ESPERA
             </CtaButton>
           </div>
         </div>

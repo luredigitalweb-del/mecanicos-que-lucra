@@ -10,6 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 import { capturarUtms } from "@/lib/utm";
 import { FloatingWhatsApp } from "@/components/landing/ui/FloatingWhatsApp";
+import { WaitlistProvider } from "@/components/landing/ui/WaitlistModal";
 
 function NotFoundComponent() {
   return (
@@ -118,7 +119,9 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <HeadContent />
       <MetaPixelTracker />
-      <Outlet />
+      <WaitlistProvider>
+        <Outlet />
+      </WaitlistProvider>
       <FloatingWhatsApp />
     </QueryClientProvider>
   );

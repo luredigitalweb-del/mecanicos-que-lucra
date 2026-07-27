@@ -222,7 +222,7 @@ export function NotBeginnerSection() {
           whileTap={{ scale: 0.98 }}
         >
           <CtaButton href="#oferta" size="xl">
-            Garantir meu ingresso
+            Entrar na lista de espera
           </CtaButton>
         </motion.div>
 
