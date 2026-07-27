@@ -26,25 +26,30 @@ export interface WaitlistLead {
 
 const isSheetConfigured = () => Boolean(APPS_SCRIPT_URL);
 
-export async function submitWaitlist({ nome, telefone }: WaitlistLead): Promise<void> {
+function whatsappUrl({ nome, telefone }: WaitlistLead): string {
+  const text = `Olá! Acabei de entrar na lista de espera do Aulão O Mecânico que Lucra.\n\nNome: ${nome}\nTelefone: ${telefone}`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+}
+
+export async function submitWaitlist(lead: WaitlistLead): Promise<void> {
+  // 1. Grava o cadastro na planilha (se configurada).
   if (isSheetConfigured()) {
-    // no-cors: o Apps Script grava a linha na planilha; não lemos a resposta.
-    await fetch(APPS_SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify({ nome, telefone }),
-    });
-    return;
+    try {
+      // no-cors: o Apps Script grava a linha na planilha; não lemos a resposta.
+      // O await garante que o POST foi enviado antes de encaminhar ao WhatsApp.
+      await fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ nome: lead.nome, telefone: lead.telefone }),
+      });
+    } catch {
+      /* falha ao gravar não deve impedir o encaminhamento ao WhatsApp */
+    }
   }
 
-  // Fallback: registra o lead no WhatsApp do negócio.
-  const text = `Lista de espera — Aulão O Mecânico que Lucra\n\nNome: ${nome}\nTelefone: ${telefone}`;
-  window.open(
-    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`,
-    "_blank",
-    "noopener,noreferrer",
-  );
+  // 2. Encaminha o visitante para o WhatsApp com os dados preenchidos.
+  window.location.href = whatsappUrl(lead);
 }
 
 /** true quando os cadastros já caem numa planilha (Apps Script configurado). */
