@@ -12,7 +12,8 @@
 // 5. Cole essa URL na constante APPS_SCRIPT_URL abaixo. Pronto — cada cadastro
 //    vira uma linha na planilha, com data/hora, nome e telefone.
 
-const APPS_SCRIPT_URL = ""; // ex: "https://script.google.com/macros/s/AKfycb.../exec"
+const APPS_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbwM0bzwrKwpIp6bV4ELRpE6HUde05fMPu3Hx2reV5UgEYHGvh5wgxBQhTHrQoMzpwJA/exec";
 
 // Fallback enquanto a planilha não está configurada: cada cadastro vira uma
 // mensagem no WhatsApp do negócio.
