@@ -2,12 +2,10 @@ import { motion, useInView, animate } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 interface SalesProgressBarProps {
-  /** Percentual de ingressos vendidos (0–100). */
+  /** Percentual da lista de espera já preenchido (0–100). */
   percent?: number;
-  /** Preço antigo (riscado). */
-  oldPrice?: string;
-  /** Preço atual. */
-  price?: string;
+  /** Texto exibido após o percentual. */
+  label?: string;
   /** "dark" para fundos escuros (padrão), "light" para o card claro. */
   variant?: "dark" | "light";
   className?: string;
@@ -15,14 +13,13 @@ interface SalesProgressBarProps {
 
 /**
  * Barra fina de escassez exibida abaixo dos CTAs:
- * "85% dos ingressos vendidos de R$ 79,00 por R$ 47,00".
+ * "85% das vagas da lista de espera já preenchidas".
  * A barra preenche e o número conta de 0 até o valor ao entrar na tela.
- * Ajuste os valores padrão aqui quando o lote/percentual mudar.
+ * Ajuste o percentual/texto padrão aqui quando a lista mudar.
  */
 export function SalesProgressBar({
   percent = 85,
-  oldPrice = "R$ 79,00",
-  price = "R$ 47,00",
+  label = "das vagas da lista de espera já preenchidas",
   variant = "dark",
   className = "",
 }: SalesProgressBarProps) {
@@ -70,9 +67,7 @@ export function SalesProgressBar({
         transition={{ duration: 0.5, delay: 0.15 }}
         className={`mt-2 text-center text-xs font-semibold sm:text-[13px] ${textClass}`}
       >
-        <span className={`font-bold tabular-nums ${pctClass}`}>{count}%</span> dos ingressos vendidos de{" "}
-        <span className="line-through">{oldPrice}</span> por{" "}
-        <span className="font-extrabold text-brand-yellow">{price}</span>
+        <span className={`font-bold tabular-nums ${pctClass}`}>{count}%</span> {label}
       </motion.p>
     </div>
   );

@@ -21,8 +21,17 @@ const WHATSAPP_NUMBER = "554137950720";
 
 export interface WaitlistLead {
   nome: string;
+  email: string;
   telefone: string;
+  perfil: string;
 }
+
+export const PERFIL_OPCOES = [
+  "Dono/Sócio de oficina",
+  "Mecânico CLT",
+  "Mecânico autônomo",
+  "Esposa/Sócia do Marido na oficina",
+] as const;
 
 const isSheetConfigured = () => Boolean(APPS_SCRIPT_URL);
 
@@ -33,7 +42,7 @@ const WAITLIST_STORAGE_KEY = "mecanico_waitlist_lead";
 export function buildWhatsappUrl(lead?: WaitlistLead | null): string {
   const base = "Olá! Confirmo que entrei na lista de espera do Aulão O Mecânico que Lucra.";
   const text = lead
-    ? `${base}\n\nNome: ${lead.nome}\nTelefone: ${lead.telefone}`
+    ? `${base}\n\nNome: ${lead.nome}\nE-mail: ${lead.email}\nWhatsApp: ${lead.telefone}\nPerfil: ${lead.perfil}`
     : base;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 }
@@ -58,7 +67,12 @@ export async function submitWaitlist(lead: WaitlistLead): Promise<void> {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({ nome: lead.nome, telefone: lead.telefone }),
+        body: JSON.stringify({
+          nome: lead.nome,
+          email: lead.email,
+          telefone: lead.telefone,
+          perfil: lead.perfil,
+        }),
       });
     } catch {
       /* falha ao gravar não deve impedir a confirmação */

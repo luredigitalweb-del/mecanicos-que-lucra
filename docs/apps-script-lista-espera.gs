@@ -19,13 +19,15 @@ function doPost(e) {
   try {
     var dados = JSON.parse(e.postData.contents);
     var nome = (dados.nome || "").toString().trim();
+    var email = (dados.email || "").toString().trim();
     var telefone = (dados.telefone || "").toString().trim();
+    var perfil = (dados.perfil || "").toString().trim();
 
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
 
-    // Cria o cabeçalho na primeira vez.
+    // Cria o cabeçalho na primeira vez (planilha vazia).
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(["Data/Hora", "Nome", "Telefone"]);
+      sheet.appendRow(["Data/Hora", "Nome", "E-mail", "WhatsApp", "Quem é você?"]);
     }
 
     var agora = Utilities.formatDate(
@@ -33,7 +35,7 @@ function doPost(e) {
       "America/Sao_Paulo",
       "dd/MM/yyyy HH:mm:ss"
     );
-    sheet.appendRow([agora, nome, telefone]);
+    sheet.appendRow([agora, nome, email, telefone, perfil]);
 
     return ContentService.createTextOutput(
       JSON.stringify({ ok: true })

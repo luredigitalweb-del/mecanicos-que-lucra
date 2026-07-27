@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useState, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, CheckCircle2, Loader2 } from "lucide-react";
-import { submitWaitlist } from "@/lib/waitlist";
+import { X, CheckCircle2, Loader2, ChevronDown } from "lucide-react";
+import { submitWaitlist, PERFIL_OPCOES } from "@/lib/waitlist";
 
 interface WaitlistContextValue {
   open: () => void;
@@ -23,7 +23,9 @@ function maskPhone(value: string): string {
 export function WaitlistProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
   const [telefone, setTelefone] = useState("");
+  const [perfil, setPerfil] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "done">("idle");
   const [error, setError] = useState<string | null>(null);
 
@@ -38,22 +40,33 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const nomeTrim = nome.trim();
+    const emailTrim = email.trim();
     const digits = telefone.replace(/\D/g, "");
     if (nomeTrim.length < 2) {
       setError("Digite seu nome completo.");
       return;
     }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailTrim)) {
+      setError("Digite um e-mail válido.");
+      return;
+    }
     if (digits.length < 10) {
-      setError("Digite um telefone válido com DDD.");
+      setError("Digite um WhatsApp válido com DDD.");
+      return;
+    }
+    if (!perfil) {
+      setError("Selecione quem é você.");
       return;
     }
     setError(null);
     setStatus("sending");
     try {
-      await submitWaitlist({ nome: nomeTrim, telefone });
+      await submitWaitlist({ nome: nomeTrim, email: emailTrim, telefone, perfil });
       setStatus("done");
       setNome("");
+      setEmail("");
       setTelefone("");
+      setPerfil("");
     } catch {
       setStatus("idle");
       setError("Não foi possível enviar. Tente novamente.");
@@ -149,7 +162,20 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                       </div>
                       <div>
                         <label className="mb-1.5 block font-sora text-xs font-bold uppercase tracking-wide text-brand-dark">
-                          Telefone (WhatsApp)
+                          E-mail
+                        </label>
+                        <input
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="seu@email.com"
+                          autoComplete="email"
+                          className="w-full rounded-xl border border-brand-dark/15 bg-brand-offwhite px-4 py-3 text-brand-dark outline-none transition-colors placeholder:text-brand-gray-light/70 focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30"
+                        />
+                      </div>
+                      <div>
+                        <label className="mb-1.5 block font-sora text-xs font-bold uppercase tracking-wide text-brand-dark">
+                          WhatsApp com DDD
                         </label>
                         <input
                           type="tel"
@@ -160,6 +186,28 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                           autoComplete="tel"
                           className="w-full rounded-xl border border-brand-dark/15 bg-brand-offwhite px-4 py-3 text-brand-dark outline-none transition-colors placeholder:text-brand-gray-light/70 focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30"
                         />
+                      </div>
+                      <div>
+                        <label className="mb-1.5 block font-sora text-xs font-bold uppercase tracking-wide text-brand-dark">
+                          Quem é você?
+                        </label>
+                        <div className="relative">
+                          <select
+                            value={perfil}
+                            onChange={(e) => setPerfil(e.target.value)}
+                            className={`w-full appearance-none rounded-xl border border-brand-dark/15 bg-brand-offwhite px-4 py-3 pr-10 outline-none transition-colors focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30 ${perfil ? "text-brand-dark" : "text-brand-gray-light/70"}`}
+                          >
+                            <option value="" disabled>
+                              Selecione uma opção
+                            </option>
+                            {PERFIL_OPCOES.map((opcao) => (
+                              <option key={opcao} value={opcao} className="text-brand-dark">
+                                {opcao}
+                              </option>
+                            ))}
+                          </select>
+                          <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-brand-gray-light" />
+                        </div>
                       </div>
 
                       {error && (

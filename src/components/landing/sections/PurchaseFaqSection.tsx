@@ -25,8 +25,8 @@ const faqs = [
     answer: "Depende de quando você aplicar. Quem sai do aulão e coloca o plano para rodar na semana seguinte vê diferença no mesmo mês.",
   },
   {
-    question: "Paguei. E agora?",
-    answer: "Você recebe as instruções de acesso por e-mail. Na data do aulão, chegue no horário, participe ao vivo e já venha com papel e caneta, porque o conteúdo é denso.",
+    question: "Entrei na lista de espera. E agora?",
+    answer: "É só aguardar. Assim que as vagas abrirem, você é avisado em primeira mão pelo WhatsApp com todas as instruções. Na data do aulão, chegue no horário, participe ao vivo e já venha com papel e caneta, porque o conteúdo é denso.",
   },
 ];
 
@@ -73,7 +73,7 @@ export function PurchaseFaqSection() {
               <Flame className="h-4 w-4 text-brand-dark" strokeWidth={3} />
             </motion.span>
             <span className="font-sora text-[11px] font-extrabold uppercase tracking-[0.18em] text-brand-dark">
-              Oferta por tempo limitado
+              Vagas limitadas
             </span>
           </motion.div>
 
@@ -121,7 +121,7 @@ export function PurchaseFaqSection() {
 
             <div className="relative px-5 py-6 sm:px-8 sm:py-9">
               <p className="mb-2 flex items-center justify-center gap-2 text-center font-sora text-[11px] font-extrabold uppercase tracking-[0.2em] text-brand-yellow">
-                <Zap className="h-3.5 w-3.5 fill-brand-yellow" /> Comprando agora você leva
+                <Zap className="h-3.5 w-3.5 fill-brand-yellow" /> Entrando na lista você garante
               </p>
               <h2 className="mb-4 text-center font-sora text-xl font-extrabold leading-tight text-brand-dark sm:text-3xl">
                 01 ingresso para o Aulão<br />O Mecânico que Lucra
@@ -170,36 +170,15 @@ export function PurchaseFaqSection() {
               </motion.div>
 
               <div className="text-center">
-                <p className="mb-2 text-sm font-semibold text-brand-gray-light">
-                  Valor total: <span className="line-through">R$ 596,00</span>
-                </p>
-                <p className="font-sora text-[10px] font-extrabold uppercase tracking-[0.2em] text-brand-dark">
-                  Seu ingresso hoje
-                </p>
-                <motion.div
-                  initial={{ scale: 0.85, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.6, type: "spring", stiffness: 200, damping: 15 }}
-                  className="relative mb-3 flex items-baseline justify-center gap-1 text-brand-yellow"
-                >
-                  <motion.div
-                    className="absolute inset-0 -z-10 rounded-full bg-brand-yellow/20 blur-2xl"
-                    animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.7, 0.4] }}
-                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                  />
-                  <span className="font-sora text-3xl font-extrabold">R$</span>
-                  <span className="font-sora text-6xl font-extrabold tracking-[-0.07em] sm:text-8xl">47,00</span>
-                </motion.div>
                 <p className="mx-auto mb-5 max-w-xs text-sm font-semibold italic leading-snug text-brand-gray-light sm:mb-7 sm:leading-relaxed">
-                  O valor de uma marmita por um plano que vai mudar o fim do mês da sua oficina.
+                  Entre na lista de espera e seja avisado em primeira mão quando as vagas abrirem.
                 </p>
 
                 {/* Lista de itens — movida para baixo (troca com o botão) */}
                 <div className="mb-2 space-y-2.5 text-left sm:space-y-3">
                   {[
-                    { label: "9 horas de conteúdo ao vivo", price: "R$ 497" },
-                    { label: "Slides e materiais extras", price: "R$ 99" },
+                    { label: "9 horas de conteúdo ao vivo" },
+                    { label: "Slides e materiais extras" },
                   ].map((item, i) => (
                     <motion.div
                       key={item.label}
@@ -220,7 +199,6 @@ export function PurchaseFaqSection() {
                         </motion.span>
                         <p className="text-sm font-bold sm:text-base">{item.label}</p>
                       </div>
-                      <span className="shrink-0 text-xs font-semibold text-brand-gray-light line-through">{item.price}</span>
                     </motion.div>
                   ))}
                 </div>
@@ -230,11 +208,11 @@ export function PurchaseFaqSection() {
                 <div className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[11px] font-bold uppercase tracking-wider text-brand-gray-light">
                   <span className="flex items-center gap-1.5">
                     <ShieldCheck className="h-4 w-4 text-brand-yellow" />
-                    Pagamento 100% seguro
+                    Cadastro 100% seguro
                   </span>
                   <span className="flex items-center gap-1.5">
                     <Clock className="h-4 w-4 text-brand-yellow" />
-                    Acesso imediato
+                    Aviso em primeira mão
                   </span>
                 </div>
               </div>
